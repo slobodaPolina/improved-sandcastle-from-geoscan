@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+body {
+	margin: 0;
+	height: 100%;
+}
+
+html {
+	height: 100%;
+}
+
+#welcome {
+	float: right;
+	padding: 0px 10px;
+}
+
+#ENTER, #REGISTER {
+	display: none;
+	position: absolute;
+	width: 100%;
+}
+
+.form_window {
+	background: white;
+	position: relative;
+	width: 300px;
+	text-align: center;
+	padding: 15px;
+	border: 3px solid #0000cc;
+	border-radius: 10px;
+	color: #0000cc;
+	margin: auto;
+}
+
+.form_window img {
+	width: 25px;
+	height: 25px;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+}
+
+.form_window img:hover, .log_button:hover {
+	cursor: pointer;
+}
+
+.log_button {
+	margin: 5px;
+	text-decoration: none;
+	float: right;
+	border: 2px solid #0000cc;
+	border-radius: 10px;
+	padding: 10px;
+	color: #0000cc;
+}
