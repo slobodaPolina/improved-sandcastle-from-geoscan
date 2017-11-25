@@ -31,7 +31,7 @@
 
 		<c:if test="${remember}" >
 			<%CookieUtils.demoUserCookie(request, response, out);
-				System.out.println("I was asked to remember that newuser");%>
+				System.out.println("I was asked to remember that user");%>
 		</c:if>
 
 	<!-- stringBuilder for string changing: when u use string it creates new one for each modification,

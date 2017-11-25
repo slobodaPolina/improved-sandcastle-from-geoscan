@@ -7,23 +7,22 @@
 <link href="<c:url value="/resources/styles_for_login.css" />"
 	rel="stylesheet" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<%@ page import="helpful.CookieUtils"%>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript" src="resources/CheckingRegInfo.js"></script>
 <title>log in</title>
 </head>
 <body>
-<!-- optional annotation checks if request param exists -->
+	<!-- optional annotation checks if request param exists -->
 	<div id="ENTER">
 		<div class="form_window">
 			<img src="images/close.png">
 			<form action="hello" method="post">
 				<p>Log in, please</p>
 				<p>
-					Name: <input type="text" name="name" value="${userName}">
+					Name: <input type="text" name="name">
 				</p>
 				<p>
-					Password: <input type="password" name="password" value="${userPassword}">
+					Password: <input type="password" name="password">
 				</p>
 				<!-- i need it only for avoiding exception, because hello page wants remember parameter from request-->
 				<input type="hidden" name="remember" value="false">

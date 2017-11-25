@@ -1,6 +1,7 @@
 package helpful;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -30,7 +31,7 @@ public class CookieUtils {
 	}
 
 	public static void demoUserCookie(HttpServletRequest request, HttpServletResponse response, JspWriter out)
-			throws IOException {
+			throws IOException, NoSuchAlgorithmException {
 		boolean found = false;
 
 		// Get an array of Cookies associated with this domain...
@@ -66,7 +67,10 @@ public class CookieUtils {
 			cookieUserName.setMaxAge(24 * 60 * 60);
 			response.addCookie(cookieUserName);
 
+			//it is a hash
 			String userPass = request.getParameter("password1");
+			PasswordHasher ph = new PasswordHasher("MD5");
+			userPass = ph.hash(userPass);
 			Cookie cookieUserPass = new Cookie("userPass", userPass);
 			cookieUserPass.setMaxAge(24 * 60 * 60);
 			response.addCookie(cookieUserPass);

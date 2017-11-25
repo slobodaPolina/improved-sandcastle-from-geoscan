@@ -6,6 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.apache.commons.mail.EmailException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import helpful.Currency;
 import helpful.DBConnector;
+import helpful.EmailSender;
 import helpful.PasswordHasher;
 import helpful.SoapCurrenciesBrowser;
 
@@ -22,16 +24,16 @@ public class RegisterController {
 
 	@RequestMapping(value = "register", method = RequestMethod.POST)
 	public String logIn(@RequestParam String email, @RequestParam String name, @RequestParam String password1,
-			@RequestParam String remember, Model model) throws SQLException, InstantiationException,
-			IllegalAccessException, ClassNotFoundException, NoSuchAlgorithmException,
-			FileNotFoundException, IOException{
+			@RequestParam String remember, Model model)
+			throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException,
+			NoSuchAlgorithmException, FileNotFoundException, IOException, EmailException {
 		DBConnector connector = new DBConnector();
 		boolean exists = connector.exists(name, email);
 		if (!exists) {
 			PasswordHasher ph = new PasswordHasher("MD5");
 			password1 = ph.hash(password1);
 			connector.insert(name, email, password1, remember);
-			//EmailSender.send(email);
+			EmailSender.send(email);
 			model.addAttribute("name", name);
 			model.addAttribute("remember", remember);
 			System.out.println("It`s ok, i have created your account");

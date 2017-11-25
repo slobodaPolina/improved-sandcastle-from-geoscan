@@ -1,4 +1,4 @@
-/*package helpful;
+package helpful;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -11,9 +11,11 @@ import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
 
 public class EmailSender {
+	//heidisql
+	//sad interview cat 
 	public static void send(String receiver) throws EmailException, FileNotFoundException, IOException {
 		Properties props = new Properties();
-		props.load(new FileInputStream("props.properties"));
+		props.load(new FileInputStream("C:\\Users\\Полина\\git\\myproj\\src\\main\\resources\\props.properties"));
 		Email email = new SimpleEmail();
 		email.setHostName(props.getProperty("mail.host"));
 		email.setSmtpPort(587);
@@ -29,4 +31,4 @@ public class EmailSender {
 		System.out.println("I have sent you an email!");
 	}
 
-}*/
+}
