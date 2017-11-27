@@ -67,14 +67,16 @@ public class CookieUtils {
 			cookieUserName.setMaxAge(24 * 60 * 60);
 			response.addCookie(cookieUserName);
 
-			//it is a hash
+			// it is a hash
 			String userPass = request.getParameter("password1");
 			PasswordHasher ph = new PasswordHasher("MD5");
-			userPass = ph.hash(userPass);
+			// pass might be null if i was automatically authorised using cookies, so there
+			// was no password in request
+			if (userPass != null)
+				userPass = ph.hash(userPass);// is it ok that here is no pass?..idk
 			Cookie cookieUserPass = new Cookie("userPass", userPass);
 			cookieUserPass.setMaxAge(24 * 60 * 60);
 			response.addCookie(cookieUserPass);
-
 		}
 		DateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 		Date now = new Date();

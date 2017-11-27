@@ -16,8 +16,11 @@
 <title>welcome</title>
 </head>
 <body>
-	<a class="log_button" style="text-decoration: none" href="./">Log
-		out </a>
+	<form action="./" method="get">
+		<input type="hidden" name="exit" value="true"> <input
+			type="submit" class="log_button" style="text-decoration: none"
+			value="Log out" />
+	</form>
 	<!-- Used Bootstrap for cute table and he decided to change the style of p. 
 	"Welcome, ..." is right on the top of the screen now. 
 	Dont wanna create another text style for it, but i am angry!-->
@@ -29,10 +32,12 @@
 	<!-- //here i had an awful mistake: if my checkbox isnt ticked, i have an
 	exception here - he is not even in request -->
 
-		<c:if test="${remember}" >
-			<%CookieUtils.demoUserCookie(request, response, out);
-				System.out.println("I was asked to remember that user");%>
-		</c:if>
+	<c:if test="${remember}">
+		<%
+			CookieUtils.demoUserCookie(request, response, out);
+				System.out.println("I was asked to remember that user");
+		%>
+	</c:if>
 
 	<!-- stringBuilder for string changing: when u use string it creates new one for each modification,
 	 but strbuilder doesnt. StringBuffer for multithread (it is slow and safe) -->

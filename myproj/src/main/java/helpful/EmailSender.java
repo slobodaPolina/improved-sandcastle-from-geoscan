@@ -11,8 +11,7 @@ import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
 
 public class EmailSender {
-	//heidisql
-	//sad interview cat 
+	//heidisql 
 	public static void send(String receiver) throws EmailException, FileNotFoundException, IOException {
 		Properties props = new Properties();
 		props.load(new FileInputStream("C:\\Users\\Полина\\git\\myproj\\src\\main\\resources\\props.properties"));

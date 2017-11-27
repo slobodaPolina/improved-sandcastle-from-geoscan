@@ -20,6 +20,9 @@ public class SearchController {
 		ModelAndView model = new ModelAndView("index");
 		DBConnector connector = new DBConnector();
 		ArrayList<Lesson> resp = connector.Search(req);
+		if(resp.size()==0) {
+			System.out.println("oh it might be your spelling mistake..");
+		}
 		model.addObject("list", resp);
 		return model;
 	}

@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class IndexController {
+public class IController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 
 	public ModelAndView index(HttpServletRequest request) throws IOException {
-		System.out.print("Index controller");
+		System.out.print("IController");
 		ModelAndView model = new ModelAndView("index");
 		return model;
 	}
