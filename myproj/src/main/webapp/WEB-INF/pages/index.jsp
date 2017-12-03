@@ -19,7 +19,7 @@
 			<form action="hello" method="post">
 				<p>Log in, please</p>
 				<p>
-					Name: <input type="text" name="name">
+					Name: <input type="text" name="name" autofocus/>
 				</p>
 				<p>
 					Password: <input type="password" name="password">
@@ -39,7 +39,7 @@
 			<form action="register" onsubmit='CheckRegInfo();' method="post">
 				<p>Sign up:</p>
 				<p>Email address:</p>
-				<input type="text" name="email" id="Email" onkeyup="CheckRegInfo()">
+				<input type="text" name="email" id="Email" onkeyup="CheckRegInfo()" autofocus/>
 				<p>Name:</p>
 				<input type="text" name="name" id="UserName"
 					onkeyup="CheckRegInfo()">

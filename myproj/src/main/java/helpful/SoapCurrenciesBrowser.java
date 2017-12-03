@@ -28,7 +28,8 @@ public class SoapCurrenciesBrowser {
 			SOAPPart soapPart = message.getSOAPPart();
 
 			StreamSource preppedMsgSrc = new StreamSource(new FileInputStream(
-					"C:\\Users\\Полина\\git\\myproj\\src\\main\\resources\\prepped.msg"));
+					//"C:\\Users\\Полина\\git\\myproj\\src\\main\\resources\\prepped.msg"));
+					"WEB-INF\\classes\\prepped.msg"));
 			soapPart.setContent(preppedMsgSrc);
 			message.saveChanges();
 

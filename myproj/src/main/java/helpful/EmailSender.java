@@ -14,7 +14,8 @@ public class EmailSender {
 	//heidisql 
 	public static void send(String receiver) throws EmailException, FileNotFoundException, IOException {
 		Properties props = new Properties();
-		props.load(new FileInputStream("C:\\Users\\Полина\\git\\myproj\\src\\main\\resources\\props.properties"));
+		props.load(new FileInputStream("props.properties"));
+				//"C:\\Users\\Полина\\git\\myproj\\src\\main\\resources\\props.properties"));
 		Email email = new SimpleEmail();
 		email.setHostName(props.getProperty("mail.host"));
 		email.setSmtpPort(587);
