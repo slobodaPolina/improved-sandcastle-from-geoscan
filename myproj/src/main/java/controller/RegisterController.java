@@ -1,49 +1,48 @@
 package controller;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
-import java.sql.SQLException;
-import java.util.ArrayList;
-
-import org.apache.commons.mail.EmailException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import helpful.Currency;
 import helpful.DBConnector;
-import helpful.EmailSender;
 import helpful.PasswordHasher;
-import helpful.SoapCurrenciesBrowser;
+import service.CommonService;
+import service.EmailSender;
+import service.SoapCurrenciesBrowser;
 
 @Controller
 public class RegisterController {
+	@Autowired
+	EmailSender sender;
+	@Autowired
+	SoapCurrenciesBrowser browser;
+	@Autowired
+	private CommonService commonService;
 
 	@RequestMapping(value = "register", method = RequestMethod.POST)
 	public String logIn(@RequestParam String email, @RequestParam String name, @RequestParam String password1,
-			@RequestParam String remember, Model model)
-			throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException,
-			NoSuchAlgorithmException, FileNotFoundException, IOException, EmailException {
-		DBConnector connector = new DBConnector();
-		boolean exists = connector.exists(name, email);
-		if (!exists) {
-			PasswordHasher ph = new PasswordHasher("MD5");
-			password1 = ph.hash(password1);
-			connector.insert(name, email, password1, remember);
-			EmailSender.send(email);
-			model.addAttribute("name", name);
-			model.addAttribute("remember", remember);
-			System.out.println("It`s ok, i have created your account");
-			SoapCurrenciesBrowser browser = new SoapCurrenciesBrowser();
-			ArrayList<Currency> list = browser.getresult();
-			model.addAttribute("list", list);
-			return "hello";
+			@RequestParam Boolean remember, Model model) {
+		try {
+			DBConnector connector = new DBConnector();
+			boolean exists = connector.exists(name, email);
+			if (!exists) {
+				PasswordHasher ph = new PasswordHasher("MD5");
+				password1 = ph.hash(password1);
+				connector.insertUser(name, email, password1, remember.toString());
+				sender.send(email);
+				commonService.fillModel(name, remember, model);
+				System.out.println("It`s ok, i have created your account");
+				return "hello";
+			}
+			System.out.println("Seems like your user name or your email is used already");
+			return "index";
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		System.out.println("Seems like your user name or your email is used already");
-		return "index";
+		return "exception";
 	}
 
 }

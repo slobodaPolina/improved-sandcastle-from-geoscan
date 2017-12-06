@@ -2,29 +2,33 @@ package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import helpful.CookieUtils;
-import helpful.Currency;
 import helpful.DBConnector;
-import helpful.SoapCurrenciesBrowser;
+import service.CommonService;
+import service.SoapCurrenciesBrowser;
 
 @Controller
 public class IndexController {
 
+	@Autowired
+	SoapCurrenciesBrowser browser;
+	@Autowired
+	private CommonService commonService;
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-
-	public ModelAndView index(HttpServletRequest request)
+	public String index(Model model, HttpServletRequest request)
 			throws IOException, SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
-		ModelAndView model;
+		
 		System.out.println("I am in Index Controller");
 		boolean exit = false;
 		// searching in request params this exit and if i found it return index. if
@@ -40,33 +44,25 @@ public class IndexController {
 		}
 		if (exit) {
 			System.out.println("You have exited just now, so i won`t try to authorise u again");
-			model = new ModelAndView("index");
-		} else {
-			String[] array = CookieUtils.hasIt(request);
-			String userName = array[0];
-			String userPass = array[1];
-			if (userName.equals("") || userPass.equals("")) {
-				model = new ModelAndView("index");
-				System.out.println("No userName or userPass, I cant autorise you");
-			} else {// Here are a lot of mistakes, so i am gonna change the code somehow..
-				DBConnector connector = new DBConnector();
-				String dataPass = connector.findpassword(userName);
-				if (dataPass.equals(userPass)) {
-					System.out.println("I found the data to autorise you!");
-					model = new ModelAndView("hello");
-					model.addObject("name", userName);
-					SoapCurrenciesBrowser browser = new SoapCurrenciesBrowser();
-					ArrayList<Currency> list = browser.getresult();
-					model.addObject("list", list);
-					model.addObject("remember", connector.remember(userName));
-
-				} else {
-					System.out.println("Hmm, incorrect password");
-					model = new ModelAndView("index");
-				}
+			return "index";
+		}
+		String[] array = CookieUtils.hasIt(request);
+		String userName = array[0];
+		String userPass = array[1];
+		if (userName.equals("") || userPass.equals("")) {
+			System.out.println("No userName or userPass, I cant autorise you");
+		} else {// Here are a lot of mistakes, so i am gonna change the code somehow..
+			DBConnector connector = new DBConnector();
+			String dataPass = connector.findPassword(userName);
+			if (dataPass.equals(userPass)) {
+				System.out.println("I found the data to autorise you!");
+				model = commonService.fillModel(userName, model);
+				return "hello";
+			} else {
+				System.out.println("Hmm, incorrect password");
 			}
 		}
-		return model;
+		return "index";
 	}
 
 }

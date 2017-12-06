@@ -29,13 +29,13 @@ public class DBConnector {
 		return res.next();
 	}
 
-	public void insert(String name, String email, String password, String remember) throws SQLException {
+	public void insertUser(String name, String email, String password, String remember) throws SQLException {
 		//inserts new user in database
 		stmt.executeUpdate("INSERT INTO users (login, email, password, remember) VALUES (\"" + name + "\", \"" + email + "\", \""
 				+ password + "\", \"" + remember + "\");");
 	}
 
-	public String findpassword(String name) throws SQLException {
+	public String findPassword(String name) throws SQLException {
 		//returns user`s password
 		ResultSet res = stmt.executeQuery("SELECT password FROM users WHERE login = \"" + name + "\";");
 		if (res.next())
@@ -44,10 +44,10 @@ public class DBConnector {
 			return "";
 	}
 
-	public String remember(String name) throws SQLException {
+	public boolean findRememberStatus(String name) throws SQLException {
 		ResultSet res = stmt.executeQuery("SELECT remember FROM users WHERE login = \"" + name + "\";");
 		if (res.next())
-			return res.getString("remember");
-		return "false";
+			return res.getBoolean("remember");
+		return false;
 	}
 }

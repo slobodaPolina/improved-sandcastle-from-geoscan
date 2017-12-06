@@ -6,7 +6,7 @@ public class SoapParser {
 
 	private ArrayList<Currency> result = new ArrayList<Currency>();
 
-	SoapParser(String request) {
+	public SoapParser(String request) {
 		String arr[] = request.split("<EnumValutes>");
 		// the first line is empty, so lets start from the second one
 		for (int i = 1; i < arr.length; i++) {

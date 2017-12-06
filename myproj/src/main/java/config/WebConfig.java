@@ -12,7 +12,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configurable
 @EnableWebMvc
-@ComponentScan(basePackages = "controller")
+@ComponentScan(basePackages = {"controller", "service"})
 public class WebConfig extends WebMvcConfigurerAdapter {
 
 	@Bean
@@ -22,6 +22,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		resolver.setSuffix(".jsp");
 		resolver.setExposeContextBeansAsAttributes(true);
 		return resolver;
+		
 	}
 
 	@Override
