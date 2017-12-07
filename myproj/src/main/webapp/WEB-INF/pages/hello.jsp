@@ -1,6 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page language="java" contentType="text/html; charset=US-ASCII"
-	pageEncoding="US-ASCII"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
 <%@ page import="helpful.CookieUtils"%>
 
 <%@ page import="helpful.Currency"%>
@@ -44,14 +47,16 @@
 	<table class='table table-striped table-sm table-bordered'>
 		<thead>
 			<tr>
-				<th>Name</th>
-				<th>CharCode</th>
-				<th>NumCode</th>
+				<th>Russian Name</th>
+				<th>English Name</th>
+				<th>Char Code</th>
+				<th>Num Code</th>
 			</tr>
 		</thead>
 		<c:forEach var="i" items="${list}">
 			<tr>
-				<td>${i.name}</td>
+				<td>${i.rusName}</td>
+				<td>${i.engName}</td>
 				<td>${i.charCode}</td>
 				<td>${i.numCode}</td>
 			</tr>

@@ -75,9 +75,7 @@ public class SoapCurrenciesBrowser {
 			DOMSource source = new DOMSource(doc);
 			transformer.transform(source, result);
 			String xmlString = result.getWriter().toString();
-			// System.out.println(xmlString);
-			// here not the answer, but xmlstring
-			SoapParser parser = new SoapParser(answer);
+			SoapParser parser = new SoapParser(xmlString);
 			return parser.getresult();
 		} catch (Exception e) {
 			e.printStackTrace();

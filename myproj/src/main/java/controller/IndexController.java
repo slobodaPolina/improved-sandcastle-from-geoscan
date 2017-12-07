@@ -24,11 +24,11 @@ public class IndexController {
 	SoapCurrenciesBrowser browser;
 	@Autowired
 	private CommonService commonService;
-	
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Model model, HttpServletRequest request)
 			throws IOException, SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
-		
+
 		System.out.println("I am in Index Controller");
 		boolean exit = false;
 		// searching in request params this exit and if i found it return index. if
@@ -49,9 +49,9 @@ public class IndexController {
 		String[] array = CookieUtils.hasIt(request);
 		String userName = array[0];
 		String userPass = array[1];
-		if (userName.equals("") || userPass.equals("")) {
+		if (("").equals(userName) || ("").equals(userPass)) {
 			System.out.println("No userName or userPass, I cant autorise you");
-		} else {// Here are a lot of mistakes, so i am gonna change the code somehow..
+		} else {
 			DBConnector connector = new DBConnector();
 			String dataPass = connector.findPassword(userName);
 			if (dataPass.equals(userPass)) {

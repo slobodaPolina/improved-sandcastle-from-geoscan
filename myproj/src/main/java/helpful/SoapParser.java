@@ -10,14 +10,15 @@ public class SoapParser {
 		String arr[] = request.split("<EnumValutes>");
 		// the first line is empty, so lets start from the second one
 		for (int i = 1; i < arr.length; i++) {
-			String tmpName = "", tmpCharCode = "", tmpNumCode = "";
-			tmpName = findValue(arr[i], "VEngname");
+			String tmpEngName = "", tmpRusName = "", tmpCharCode = "", tmpNumCode = "";
+			tmpEngName = findValue(arr[i], "VEngname");
+			tmpRusName = findValue(arr[i], "Vname");
 			tmpCharCode = findValue(arr[i], "VcharCode");
 			tmpNumCode = findValue(arr[i], "VnumCode");
-			result.add(new Currency(tmpName, tmpCharCode, tmpNumCode));
+			result.add(new Currency(tmpEngName, tmpRusName, tmpCharCode, tmpNumCode));
 		}
 		for (int i = 0; i < result.size() - 1; i++) {
-			if (result.get(i).getName().equals(result.get(i + 1).getName())) {
+			if (result.get(i).getEngName().equals(result.get(i + 1).getEngName())) {
 				result.remove(i);
 				i--;
 			}
@@ -56,6 +57,6 @@ public class SoapParser {
 	}
 
 	private boolean alnum(char i) {
-		return (i <= 'z' && i >= 'a') || (i <= 'Z' && i >= 'A') || (i <= '9' && i >= '0');
+		return (i <= 'z' && i >= 'a') || (i <= 'Z' && i >= 'A') || (i <= '9' && i >= '0') || (i <= 'ÿ' && i >= 'à') || (i <= 'ß' && i >= 'À');
 	}
 }
