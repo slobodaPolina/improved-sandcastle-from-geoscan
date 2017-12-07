@@ -12,6 +12,7 @@ html {
 #welcome {
 	float: right;
 	padding: 0px 10px;
+	margin-top: 2%;
 }
 
 #ENTER, #REGISTER {

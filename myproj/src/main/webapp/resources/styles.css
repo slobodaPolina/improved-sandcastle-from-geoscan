@@ -1,0 +1,180 @@
+html {
+	height: 100%;
+	margin: 0;
+}
+
+body {
+	background: #fff url(/MyProject/images/grad.jpg) repeat-x;
+	margin: 0;
+	font: 1em/1 Colibri;
+	height: 100%;
+}
+
+#page {
+	min-height: 100%;
+}
+
+h1 {
+	text-align: center;
+	color: #93B5F0;
+	font-size: 150%;
+	font-style: italic;
+}
+
+h2 {
+	text-align: center;
+	color: #70D7E6;
+	font-size: 120%;
+	font-style: italic;
+}
+
+.header {
+	background: url(/MyProject/images/bckg.jpg);
+	font-style: italic;
+	font-size: 1.3em;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 500;
+}
+
+#timer {
+	text-indent: 0;
+	font-style: italic;
+	padding: 10px;
+	border: 1px solid blue;
+	border-radius: 20px;
+	margin: auto;
+	float: left;
+	margin: 10px 30px;
+	display: none;
+}
+
+.buttons {
+	margin: auto;
+}
+
+button {
+	border-radius: 20px;
+	width: 100px;
+	color: blue;
+	float: left;
+	height: 40px;
+	background-color: white;
+	border-color: blue;
+	margin: 10px 30px;
+}
+
+button:focus {
+	outline: none;
+}
+
+.columns {
+	float: left;
+	width: 30%;
+	margin: 10px;
+}
+
+.menu {
+	padding: 10px;
+	list-style-type: none;
+	text-align: center;
+	margin-top: 0;
+}
+
+.menu a, form {
+	color: #fff;
+	padding: 10px 10px;
+	text-decoration: none;
+	display: inline-block;
+	width: 15%;
+	font-family: 'Underdog', cursive;
+}
+
+.menu a:hover, form:hover {
+	border-radius: 20px;
+	background-color: SkyBlue;
+}
+
+.menu li {
+	display: inline;
+}
+
+.content-text {
+	background: #fff;
+	margin: 100px 50px 100px 160px;
+	padding: 20px 40px;
+	text-align: left;
+	font-size: 110%;
+	text-indent: 1.5em;
+	border-radius: 20px;
+}
+
+.footer-bg {
+	background: url(/MyProject/images/footer.jpg) repeat-x center;
+	height: 80px;
+	margin-top: -80px;
+	width: 100%;
+}
+
+.copyright {
+	padding: 20px;
+	color: #fff;
+	text-align: center;
+}
+
+.warning {
+	margin: 10px 10px;
+}
+
+.ilovecats {
+	float: left;
+	margin: 0 10px 0 25px;
+	width: 70px;
+	height: 21px;
+}
+
+.note {
+	margin: auto;
+	background: url(/MyProject/images/note.jpg) no-repeat center;
+	font: 1em/2 Valencia;
+	text-align: center;
+	width: 350px;
+	border-top: 100px;
+	padding-top: 100px;
+	padding-bottom: 100px;
+	padding-left: 50px;
+	padding-right: 50px;
+	font-family: 'Marck Script', cursive;
+	font-size: 1.1em;
+}
+
+aside {
+	float: left;
+}
+
+.seealso {
+	background: white;
+	border-radius: 20px;
+	text-align: center;
+	font-style: italic;
+	width: 130px;
+	margin: 50px 10px;
+	padding: 5px;
+}
+
+.seealso a, #pages_list a {
+	text-decoration: none;
+}
+
+.seealso img {
+	width: 110px;
+}
+
+.clearleft {
+	clear: left;
+}
+
+.clearright {
+	clear: right;
+}
