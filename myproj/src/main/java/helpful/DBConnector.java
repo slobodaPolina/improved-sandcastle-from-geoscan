@@ -24,19 +24,19 @@ public class DBConnector {
 	}
 
 	public boolean exists(String name, String email) throws SQLException {
-		//checkes if db includes a user with sch login or such email
+		// checkes if db includes a user with sch login or such email
 		res = stmt.executeQuery("SELECT * FROM users WHERE login = \"" + name + "\" OR email = \"" + email + "\";");
 		return res.next();
 	}
 
 	public void insertUser(String name, String email, String password, String remember) throws SQLException {
-		//inserts new user in database
-		stmt.executeUpdate("INSERT INTO users (login, email, password, remember) VALUES (\"" + name + "\", \"" + email + "\", \""
-				+ password + "\", \"" + remember + "\");");
+		// inserts new user in database
+		stmt.executeUpdate("INSERT INTO users (login, email, password, remember) VALUES (\"" + name + "\", \"" + email
+				+ "\", \"" + password + "\", \"" + remember + "\");");
 	}
 
 	public String findPassword(String name) throws SQLException {
-		//returns user`s password
+		// returns user`s password
 		ResultSet res = stmt.executeQuery("SELECT password FROM users WHERE login = \"" + name + "\";");
 		if (res.next())
 			return res.getString(1);
@@ -48,6 +48,21 @@ public class DBConnector {
 		ResultSet res = stmt.executeQuery("SELECT remember FROM users WHERE login = \"" + name + "\";");
 		if (res.next())
 			return res.getBoolean("remember");
+		return false;
+	}
+
+	public void storeSession(String name, String id) throws SQLException {
+		stmt.executeUpdate("UPDATE users SET session=\"" + id + "\" where login= \"" + name + "\";");
+	}
+
+	public boolean IsTheSessionActive(String name, String id) throws SQLException {
+		ResultSet res = stmt.executeQuery("SELECT session FROM users WHERE login = \"" + name + "\";");
+		if (res.next()) {
+			String str = res.getString("session");
+			if (id.equals(str))
+				return true;
+			return false;
+		}
 		return false;
 	}
 }

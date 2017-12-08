@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,39 +31,35 @@ public class IndexController {
 			throws IOException, SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 
 		System.out.println("I am in Index Controller");
-		boolean exit = false;
 		// searching in request params this exit and if i found it return index. if
 		// no exit there, try to authorise. Ofc when calling this controller send exit
 		// on exit)))
-		String tmp;
-		Enumeration<String> en = request.getParameterNames();
-		while (en.hasMoreElements()) {
-			tmp = en.nextElement();
-			if (tmp.equals("exit")) {
-				exit = true;
+		try {
+			if (commonService.hasParameter(request, "exit")) {
+				System.out.println("You have exited just now, so i won`t try to authorise u again");
+				return "index";
 			}
-		}
-		if (exit) {
-			System.out.println("You have exited just now, so i won`t try to authorise u again");
-			return "index";
-		}
-		String[] array = CookieUtils.hasIt(request);
-		String userName = array[0];
-		String userPass = array[1];
-		if (("").equals(userName) || ("").equals(userPass)) {
-			System.out.println("No userName or userPass, I cant autorise you");
-		} else {
-			DBConnector connector = new DBConnector();
-			String dataPass = connector.findPassword(userName);
-			if (dataPass.equals(userPass)) {
-				System.out.println("I found the data to autorise you!");
-				model = commonService.fillModel(userName, model);
-				return "hello";
+			String[] array = CookieUtils.hasIt(request);
+			String userName = array[0];
+			String userPass = array[1];
+			if (("").equals(userName) || ("").equals(userPass)) {
+				System.out.println("No userName or userPass, I cant autorise you");
 			} else {
-				System.out.println("Hmm, incorrect password");
+				DBConnector connector = new DBConnector();
+				String dataPass = connector.findPassword(userName);
+				if (dataPass.equals(userPass)) {
+					System.out.println("I found the data to autorise you!");
+					model = commonService.fillModel(userName, model);
+					return "hello";
+				} else {
+					System.out.println("Hmm, incorrect password");
+				}
 			}
+			return "index";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "exception";
 		}
-		return "index";
 	}
 
 }

@@ -6,6 +6,8 @@
 <head>
 <link href="<c:url value="/resources/styles_for_login.css" />"
 	rel="stylesheet" />
+
+<link href="<c:url value="/resources/styles.css" />" rel="stylesheet" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript" src="resources/CheckingRegInfo.js"></script>
@@ -19,7 +21,7 @@
 			<form action="hello" method="post">
 				<p>Log in, please</p>
 				<p>
-					Name: <input type="text" name="name" autofocus/>
+					Name: <input type="text" name="name" autofocus />
 				</p>
 				<p>
 					Password: <input type="password" name="password">
@@ -27,7 +29,7 @@
 				<!-- i need it only for avoiding exception, because hello page wants remember parameter from request-->
 				<input type="hidden" name="remember" value="false">
 				<p>
-					<input type="submit" value="Log In" />
+					<input type="submit" value="Log In" class="sumbit-button" />
 				</p>
 			</form>
 		</div>
@@ -39,7 +41,8 @@
 			<form action="register" onsubmit='CheckRegInfo();' method="post">
 				<p>Sign up:</p>
 				<p>Email address:</p>
-				<input type="text" name="email" id="Email" onkeyup="CheckRegInfo()" autofocus/>
+				<input type="text" name="email" id="Email" onkeyup="CheckRegInfo()"
+					autofocus />
 				<p>Name:</p>
 				<input type="text" name="name" id="UserName"
 					onkeyup="CheckRegInfo()">
@@ -57,7 +60,8 @@
 					name="remember" value="false"> Don`t do it
 				</label>
 				<p>
-					<input type="submit" id="RegisterButton" value="Register" disabled />
+					<input type="submit" id="RegisterButton" value="Register"
+						class="sumbit-button" disabled />
 				</p>
 			</form>
 		</div>

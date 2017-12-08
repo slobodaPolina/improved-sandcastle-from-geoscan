@@ -1,10 +1,10 @@
 html {
+	background: #fff url(/MyProject/images/grad.jpg) repeat-x;
 	height: 100%;
 	margin: 0;
 }
 
 body {
-	background: #fff url(/MyProject/images/grad.jpg) repeat-x;
 	margin: 0;
 	font: 1em/1 Colibri;
 	height: 100%;
@@ -29,7 +29,6 @@ h2 {
 }
 
 .header {
-	background: url(/MyProject/images/bckg.jpg);
 	font-style: italic;
 	font-size: 1.3em;
 	position: fixed;
@@ -82,18 +81,17 @@ button:focus {
 	margin-top: 0;
 }
 
-.menu a, form {
-	color: #fff;
-	padding: 10px 10px;
-	text-decoration: none;
+.menu a, .menu form {
 	display: inline-block;
 	width: 15%;
+	margin: 5px;
+	text-decoration: none;
+	border: 2px solid #0000cc;
+	border-radius: 10px;
+	padding: 10px;
 	font-family: 'Underdog', cursive;
-}
-
-.menu a:hover, form:hover {
-	border-radius: 20px;
-	background-color: SkyBlue;
+	color: #0000cc;
+	background: white;
 }
 
 .menu li {
@@ -177,4 +175,17 @@ aside {
 
 .clearright {
 	clear: right;
+}
+
+.sumbit-button {
+	background: white;
+	margin: 0;
+	font-family: 'Underdog', cursive;
+	cursor: pointer;
+	border: 0;
+	border-radius: 10px;
+	border: 2px solid #0000cc;
+	width: 100%;
+	text-decoration: none;
+	color: #0000cc;
 }

@@ -19,15 +19,11 @@
 <title>currencies</title>
 </head>
 <body>
-	<form action="./" method="get">
+	<form action="logout" method="get">
 		<input type="hidden" name="exit" value="true"> <input
 			type="submit" class="log_button" style="text-decoration: none"
 			value="Log out" />
 	</form>
-	<p id="welcome">
-		Welcome,
-		<c:out value="${name}" />
-	</p>
 
 	<!-- stringBuilder for string changing: when u use string it creates new one for each modification,
 	 but strbuilder doesnt. StringBuffer for multithread (it is slow and safe) -->

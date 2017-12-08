@@ -51,7 +51,7 @@ public class CookieUtils {
 				}
 			}
 			if (lastLoginDatetime != null && userName != null && userName.equals(request.getParameter("name"))) {
-				out.println(
+				System.out.println(
 						"Hello, " + userName + "! Your last login date and time is: " + lastLoginDatetime + "<br/>");
 				found = true;
 			}
@@ -59,7 +59,7 @@ public class CookieUtils {
 
 		// if no cookies or no datetime found
 		if (!found) {
-			out.println("Oh, it seems to me i have no your cookies<br/>");
+			System.out.println("Oh, it seems to me i have no your cookies<br/>");
 
 			String userName = request.getParameter("name");
 			Cookie cookieUserName = new Cookie("userName", userName);

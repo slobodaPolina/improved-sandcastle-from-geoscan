@@ -1,28 +1,57 @@
 package service;
 
-import java.util.ArrayList;
+import java.util.Enumeration;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import helpful.Currency;
 import helpful.DBConnector;
 
 @Service
 public class CommonService {
 
-	@Autowired
-	private SoapCurrenciesBrowser browser;
+	public boolean hasParameter(HttpServletRequest request, String param) {
+		String tmp;
+		Enumeration<String> en = request.getParameterNames();
+		while (en.hasMoreElements()) {
+			tmp = en.nextElement();
+			if (tmp.equals(param)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean IsSessionActive(HttpServletRequest request) {
+		try {
+			HttpSession session = request.getSession();
+			DBConnector conn = new DBConnector();
+			return conn.IsTheSessionActive((String) (session.getAttribute("name")), session.getId());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public void saveSession(HttpServletRequest request, String name) {
+		try {
+			HttpSession session = request.getSession();
+			DBConnector conn = new DBConnector();
+			conn.storeSession(name, session.getId());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	public Model fillModel(String userName, Model model) {
 		return fillModel(userName, getRememberStatus(userName), model);
 	}
 
 	public Model fillModel(String userName, boolean remember, Model model) {
-		ArrayList<Currency> list = browser.getCbrInfo();
 		model.addAttribute("name", userName);
-		model.addAttribute("list", list);
 		model.addAttribute("remember", remember);
 		return model;
 	}

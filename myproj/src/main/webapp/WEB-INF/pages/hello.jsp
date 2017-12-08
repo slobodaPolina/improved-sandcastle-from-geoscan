@@ -26,14 +26,13 @@
 		<header>
 		<div class="header">
 			<ul class="menu">
-				<li><a href="index.html"> Главная </a></li>
-				<li><a href="Scripts.html" target="_blank"> Скрипты</a></li>
-				<li><a href="Animation.html" target="_blank"> Летающие
-						бублики</a></li>
-				<li><a href="currencies.jsp" target="_blank"> Список валют</a></li>
-				<li><form action="./" method="get">
+				<li><a href="scripts" target="_blank"> Скрипты</a></li>
+				<li><a href="animation" target="_blank"> Летающие бублики</a></li>
+				<li><a href="currencies" target="_blank"> Список валют</a></li>
+				<li><form action="logout" method="get">
 						<input type="hidden" name="exit" value="true"> <input
-							type="submit" value="Log out" />
+							type="submit" value="Log out" class="sumbit-button"
+							style="border: 0" />
 					</form></li>
 			</ul>
 		</div>
@@ -67,8 +66,8 @@
 					применен и в прочих вышеприведенных страницах, но здесь его куда
 					больше. Эта страничка адаптирована под разные экраны и содержит
 					текст о миграции морских котиков)</li>
-				<li><a href="currencies.jsp" target="_blank"> Справочник
-						валют</a> Страница с валютами, запрашиваемыми у центробанка</li>
+				<li><a href="currencies" target="_blank"> Справочник валют</a>
+					Страница с валютами, запрашиваемыми у центробанка</li>
 			</ul>
 		</div>
 	</div>
