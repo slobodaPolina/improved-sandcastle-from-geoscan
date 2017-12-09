@@ -29,7 +29,7 @@
 				<!-- i need it only for avoiding exception, because hello page wants remember parameter from request-->
 				<input type="hidden" name="remember" value="false">
 				<p>
-					<input type="submit" value="Log In" class="sumbit-button" />
+					<input type="submit" value="Log In" class="submit-button" />
 				</p>
 			</form>
 		</div>

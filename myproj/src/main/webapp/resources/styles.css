@@ -1,7 +1,8 @@
 html {
-	background: #fff url(/MyProject/images/grad.jpg) repeat-x;
-	height: 100%;
+	background: #fff url(/MyProject/images/grad.jpg) repeat-x !important;
+	height : 100%;
 	margin: 0;
+	height: 100%;
 }
 
 body {
@@ -110,15 +111,20 @@ button:focus {
 
 .footer-bg {
 	background: url(/MyProject/images/footer.jpg) repeat-x center;
-	height: 80px;
-	margin-top: -80px;
 	width: 100%;
 }
 
-.copyright {
-	padding: 20px;
-	color: #fff;
+.footer-text {
+	padding: 20px 0; color : white;
 	text-align: center;
+	display: inline;
+	float: left;
+	color: white; text-align : center; display : inline; float : left;
+	width: 50%;
+}
+
+.footer-text a {
+	color: white;
 }
 
 .warning {
@@ -161,8 +167,9 @@ aside {
 	padding: 5px;
 }
 
-.seealso a, #pages_list a {
+a {
 	text-decoration: none;
+	font-family: cursive;
 }
 
 .seealso img {
@@ -177,7 +184,7 @@ aside {
 	clear: right;
 }
 
-.sumbit-button {
+.submit-button{
 	background: white;
 	margin: 0;
 	font-family: 'Underdog', cursive;

@@ -2,11 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Enumeration;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +22,7 @@ public class IndexController {
 	@Autowired
 	private CommonService commonService;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = { RequestMethod.GET, RequestMethod.POST })
 	public String index(Model model, HttpServletRequest request)
 			throws IOException, SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 

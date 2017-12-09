@@ -10,13 +10,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class LogoutController {
-	@RequestMapping(value = "logout", method = RequestMethod.GET)
+	@RequestMapping(value = "logout", method = RequestMethod.POST)
 	public String logIn(HttpServletRequest request, Model model) {
 		try {
 			HttpSession session = request.getSession();
 			if (session != null) {
 				session.invalidate();
 			}
+			// HERE IT GOES TO THE INDEXCONTROLLER WHERE I TRY TO AUTOMATICALLY AUTORRISE SO
+			// I NEED TO ADD PARAMETER "EXIT" TO THE REQUEST
 			return "index";
 		} catch (Exception e) {
 			e.printStackTrace();
