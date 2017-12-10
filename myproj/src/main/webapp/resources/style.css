@@ -1,0 +1,33 @@
+/* цвет фона и рамки навигационного меню */
+.navbar-default {
+	background-color: #0fe3f4;
+	border-color: #0fe3f4;
+}
+/* цвет бренда и пунктов навигационного меню в обычном состо€нии и при наведении */
+.navbar-default .navbar-brand, .navbar-default .navbar-nav>li>a {
+	color: white;
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-nav>li>a:hover
+	{
+	color: black;
+}
+
+/* ÷вет рамки и фона у кнопки, котора€ открывает меню */
+.navbar-default .navbar-toggle, .navbar-default .navbar-toggle:hover {
+	border-color: white;
+}
+
+/* ÷вет полосочек в кнопочке, котора€ открывает меню */
+.navbar-default .navbar-toggle .icon-bar {
+	background-color: black;
+}
+
+body {
+	padding-top: 100px;
+}
+
+footer {
+	line-height: 100px;
+	text-align: center;
+}

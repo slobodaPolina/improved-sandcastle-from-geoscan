@@ -12,19 +12,16 @@ import helpful.DBConnector;
 import helpful.PasswordHasher;
 import service.CommonService;
 import service.EmailSender;
-import service.SoapCurrenciesBrowser;
 
 @Controller
 public class RegisterController {
 	@Autowired
 	EmailSender sender;
 	@Autowired
-	SoapCurrenciesBrowser browser;
-	@Autowired
 	private CommonService commonService;
 
 	@RequestMapping(value = "register", method = RequestMethod.POST)
-	public String logIn(HttpServletRequest request, Model model) {
+	public String Register(HttpServletRequest request, Model model) {
 		try {
 			String name = request.getParameter("name");
 			String email = request.getParameter("email");

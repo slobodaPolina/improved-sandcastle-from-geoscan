@@ -12,13 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import helpful.CookieUtils;
 import helpful.DBConnector;
 import service.CommonService;
-import service.SoapCurrenciesBrowser;
 
 @Controller
 public class IndexController {
-
-	@Autowired
-	SoapCurrenciesBrowser browser;
 	@Autowired
 	private CommonService commonService;
 

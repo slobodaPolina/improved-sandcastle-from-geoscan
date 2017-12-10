@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import service.CommonService;
 
 @Controller
-public class ScriptController {
+public class CatsController {
 	@Autowired
 	private CommonService commonService;
 
-	@RequestMapping(value = "scripts", method = { RequestMethod.GET, RequestMethod.POST })
-	public String Script(HttpServletRequest request, Model model) {
+	@RequestMapping(value = "cats", method = { RequestMethod.GET, RequestMethod.POST })
+	public String Cats(HttpServletRequest request, Model model) {
 		try {
 			if (commonService.IsSessionActive(request)) {
 				System.out.println("Your session is ok");
-				return "scripts";
+				return "cats";
 			} else {
 				System.out.println("You have loged out! Log in again,  please");
 				return "index";

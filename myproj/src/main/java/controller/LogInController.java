@@ -11,12 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import helpful.DBConnector;
 import helpful.PasswordHasher;
 import service.CommonService;
-import service.SoapCurrenciesBrowser;
 
 @Controller
 public class LogInController {
-	@Autowired
-	SoapCurrenciesBrowser browser;
 	@Autowired
 	private CommonService commonService;
 

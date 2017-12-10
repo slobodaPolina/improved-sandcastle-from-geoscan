@@ -1,3 +1,6 @@
 eclipse.preferences.version=1
+encoding//src/main/webapp/WEB-INF/pages/bootstrappage.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/pages/cats.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/pages/footer.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/pages/header.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/pages/sandbox.jsp=UTF-8

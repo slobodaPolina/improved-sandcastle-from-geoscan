@@ -15,7 +15,7 @@ body {
 footer {
 	position: absolute;
 	bottom: 0;
-	width:100%;
+	width: 100%;
 }
 
 article, aside, footer, header, nav, section {
@@ -114,11 +114,19 @@ audio
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -129,7 +137,11 @@ controls
 
 
 
+
+
  
+
+
 
 
 
@@ -141,7 +153,13 @@ display
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -149,7 +167,13 @@ display
 
 
 
+
+
 none
+
+
+
+
 
 
 
@@ -164,11 +188,19 @@ height
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -189,11 +221,19 @@ svg
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -202,7 +242,11 @@ svg
 
 
 
+
+
  
+
+
 
 
 
@@ -214,7 +258,13 @@ overflow
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -222,7 +272,13 @@ overflow
 
 
 
+
+
 hidden
+
+
+
+
 
 
 
@@ -418,13 +474,11 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	margin-top: 0;
-	margin-bottom: .5rem
+	margin: 10px;
 }
 
 p {
-	margin-top: 0;
-	margin-bottom: 1rem
+	margin: 5px;
 }
 
 abbr[data-original-title], abbr[title] {
@@ -476,11 +530,19 @@ a
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -491,7 +553,11 @@ href
 
 
 
+
+
  
+
+
 
 
 
@@ -500,7 +566,11 @@ href
 
 
 
+
+
  
+
+
 
 
 
@@ -511,7 +581,11 @@ tabindex
 
 
 
+
+
  
+
+
 
 
 
@@ -523,7 +597,13 @@ color
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -531,7 +611,13 @@ color
 
 
 
+
+
 inherit
+
+
+
+
 
 
 
@@ -546,7 +632,13 @@ text-decoration
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -554,7 +646,13 @@ text-decoration
 
 
 
+
+
 none
+
+
+
+
 
 
 
@@ -769,11 +867,19 @@ hr {
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -782,7 +888,11 @@ hr {
 
 
 
+
+
  
+
+
 
 
 
@@ -794,7 +904,13 @@ margin-right
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -802,8 +918,14 @@ margin-right
 
 
 
+
+
 5
 px
+
+
+
+
 
 
 
@@ -2461,7 +2583,6 @@ pre code {
 	font-size: 1rem;
 	line-height: 1.25;
 	color: #464a4c;
-	
 	background-image: none;
 	-webkit-background-clip: padding-box;
 	background-clip: padding-box;
@@ -2526,7 +2647,15 @@ select
 
 
 
+
+
+
+
 .form-control
+
+
+
+
 
 
 
@@ -2537,7 +2666,11 @@ select
 
 
 
+
+
  
+
+
 
 
 
@@ -2548,7 +2681,11 @@ size
 
 
 
+
+
  
+
+
 
 
 
@@ -2557,7 +2694,11 @@ size
 
 
 
+
+
  
+
+
 
 
 
@@ -2568,7 +2709,11 @@ multiple
 
 
 
+
+
  
+
+
 
 
 
@@ -2580,7 +2725,13 @@ height
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -2588,7 +2739,13 @@ height
 
 
 
+
+
 calc
+
+
+
+
 
 
 
@@ -2600,6 +2757,10 @@ calc
 +
 2
 px
+
+
+
+
 
 
 
@@ -2678,7 +2839,15 @@ select
 
 
 
+
+
+
+
 .btn
+
+
+
+
 
 
 
@@ -2689,7 +2858,11 @@ select
 
 
 
+
+
  
+
+
 
 
 
@@ -2700,7 +2873,11 @@ size
 
 
 
+
+
  
+
+
 
 
 
@@ -2709,7 +2886,11 @@ size
 
 
 
+
+
  
+
+
 
 
 
@@ -2721,7 +2902,11 @@ multiple
 
 
 
+
+
 	
+
+
 
 
 
@@ -2729,6 +2914,10 @@ multiple
 .input-group-sm
 >
 select
+
+
+
+
 
 
 
@@ -2742,11 +2931,19 @@ select
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -2757,7 +2954,11 @@ size
 
 
 
+
+
  
+
+
 
 
 
@@ -2766,7 +2967,11 @@ size
 
 
 
+
+
  
+
+
 
 
 
@@ -2777,7 +2982,11 @@ multiple
 
 
 
+
+
  
+
+
 
 
 
@@ -2791,7 +3000,15 @@ select
 
 
 
+
+
+
+
 .input-group-addon
+
+
+
+
 
 
 
@@ -2802,7 +3019,11 @@ select
 
 
 
+
+
  
+
+
 
 
 
@@ -2813,7 +3034,11 @@ size
 
 
 
+
+
  
+
+
 
 
 
@@ -2822,7 +3047,11 @@ size
 
 
 
+
+
  
+
+
 
 
 
@@ -2834,12 +3063,20 @@ multiple
 
 
 
+
+
 	
+
+
 
 
 
 ),
 select
+
+
+
+
 
 
 
@@ -2853,11 +3090,19 @@ select
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -2868,7 +3113,11 @@ size
 
 
 
+
+
  
+
+
 
 
 
@@ -2877,7 +3126,11 @@ size
 
 
 
+
+
  
+
+
 
 
 
@@ -2888,7 +3141,11 @@ multiple
 
 
 
+
+
  
+
+
 
 
 
@@ -2900,7 +3157,13 @@ height
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -2908,8 +3171,14 @@ height
 
 
 
+
+
 1
 .8125rem
+
+
+
+
 
 
 
@@ -2937,7 +3206,15 @@ select
 
 
 
+
+
+
+
 .btn
+
+
+
+
 
 
 
@@ -2948,7 +3225,11 @@ select
 
 
 
+
+
  
+
+
 
 
 
@@ -2959,7 +3240,11 @@ size
 
 
 
+
+
  
+
+
 
 
 
@@ -2968,7 +3253,11 @@ size
 
 
 
+
+
  
+
+
 
 
 
@@ -2980,7 +3269,11 @@ multiple
 
 
 
+
+
 	
+
+
 
 
 
@@ -2988,6 +3281,10 @@ multiple
 .input-group-lg
 >
 select
+
+
+
+
 
 
 
@@ -3001,11 +3298,19 @@ select
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -3016,7 +3321,11 @@ size
 
 
 
+
+
  
+
+
 
 
 
@@ -3025,7 +3334,11 @@ size
 
 
 
+
+
  
+
+
 
 
 
@@ -3036,7 +3349,11 @@ multiple
 
 
 
+
+
  
+
+
 
 
 
@@ -3050,7 +3367,15 @@ select
 
 
 
+
+
+
+
 .input-group-addon
+
+
+
+
 
 
 
@@ -3061,7 +3386,11 @@ select
 
 
 
+
+
  
+
+
 
 
 
@@ -3072,7 +3401,11 @@ size
 
 
 
+
+
  
+
+
 
 
 
@@ -3081,7 +3414,11 @@ size
 
 
 
+
+
  
+
+
 
 
 
@@ -3093,12 +3430,20 @@ multiple
 
 
 
+
+
 	
+
+
 
 
 
 ),
 select
+
+
+
+
 
 
 
@@ -3112,11 +3457,19 @@ select
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -3127,7 +3480,11 @@ size
 
 
 
+
+
  
+
+
 
 
 
@@ -3136,7 +3493,11 @@ size
 
 
 
+
+
  
+
+
 
 
 
@@ -3147,7 +3508,11 @@ multiple
 
 
 
+
+
  
+
+
 
 
 
@@ -3159,7 +3524,13 @@ height
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -3167,8 +3538,14 @@ height
 
 
 
+
+
 3
 .166667rem
+
+
+
+
 
 
 
@@ -4097,11 +4474,19 @@ tbody.collapse.show {
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -4110,7 +4495,11 @@ tbody.collapse.show {
 
 
 
+
+
  
+
+
 
 
 
@@ -4119,7 +4508,11 @@ tbody.collapse.show {
 
 
 
+
+
  
+
+
 
 
 
@@ -4128,7 +4521,11 @@ tbody.collapse.show {
 
 
 
+
+
  
+
+
 
 
 
@@ -4137,7 +4534,11 @@ tbody.collapse.show {
 
 
 
+
+
  
+
+
 
 
 
@@ -4147,7 +4548,11 @@ tbody.collapse.show {
 
 
 
+
+
 	
+
+
 
 
 
@@ -4159,11 +4564,19 @@ border-radius
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -4182,7 +4595,15 @@ border-radius
 
 
 
+
+
+
+
 :first-child
+
+
+
+
 
 
 
@@ -4193,7 +4614,11 @@ border-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -4202,7 +4627,11 @@ border-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -4211,7 +4640,11 @@ border-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -4220,7 +4653,11 @@ border-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -4232,11 +4669,19 @@ border-bottom-right-radius
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -4248,11 +4693,19 @@ border-top-right-radius
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -4267,7 +4720,15 @@ border-top-right-radius
 
 
 
+
+
+
+
 :last-child
+
+
+
+
 
 
 
@@ -4278,7 +4739,11 @@ border-top-right-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -4287,7 +4752,11 @@ border-top-right-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -4301,7 +4770,13 @@ border-top-right-radius
 
 
 
+
+
+
+
 :not
+
+
 
 
 
@@ -4310,12 +4785,18 @@ border-top-right-radius
 
 
 
+
+
 (
 :first-child
 
 
 
+
+
  
+
+
 
 
 
@@ -4327,11 +4808,19 @@ border-bottom-left-radius
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -4343,11 +4832,19 @@ border-top-left-radius
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -4437,11 +4934,19 @@ border-top-left-radius
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -4450,7 +4955,11 @@ border-top-left-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -4459,7 +4968,11 @@ border-top-left-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -4468,7 +4981,11 @@ border-top-left-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -4480,11 +4997,19 @@ border-radius
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -4499,7 +5024,15 @@ border-radius
 
 
 
+
+
+
+
 :first-child
+
+
+
+
 
 
 
@@ -4510,7 +5043,11 @@ border-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -4519,7 +5056,11 @@ border-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -4531,11 +5072,19 @@ border-bottom-right-radius
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -4547,11 +5096,19 @@ border-bottom-left-radius
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -4566,7 +5123,15 @@ border-bottom-left-radius
 
 
 
+
+
+
+
 :last-child
+
+
+
+
 
 
 
@@ -4577,7 +5142,11 @@ border-bottom-left-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -4586,7 +5155,11 @@ border-bottom-left-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -4598,11 +5171,19 @@ border-top-right-radius
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -4614,11 +5195,19 @@ border-top-left-radius
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -4695,7 +5284,11 @@ border-top-left-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -4706,11 +5299,19 @@ border-top-left-radius
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -4719,7 +5320,11 @@ border-top-left-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -4728,7 +5333,11 @@ border-top-left-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -4737,7 +5346,11 @@ border-top-left-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -4749,11 +5362,19 @@ border-top-left-radius
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -4762,7 +5383,11 @@ border-top-left-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -4771,7 +5396,11 @@ border-top-left-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -4780,7 +5409,11 @@ border-top-left-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -4792,11 +5425,19 @@ border-top-left-radius
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -4805,7 +5446,11 @@ border-top-left-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -4814,7 +5459,11 @@ border-top-left-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -4823,7 +5472,11 @@ border-top-left-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -4835,11 +5488,19 @@ border-radius
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -4900,11 +5561,19 @@ border-radius
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -4913,7 +5582,11 @@ border-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -4925,11 +5598,19 @@ border-right
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -4939,7 +5620,11 @@ border-right
 
 
 
+
+
  
+
+
 
 
 
@@ -4950,11 +5635,19 @@ border-right
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -4963,7 +5656,11 @@ border-right
 
 
 
+
+
  
+
+
 
 
 
@@ -4975,11 +5672,19 @@ border-right
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -4989,7 +5694,11 @@ border-right
 
 
 
+
+
 	
+
+
 
 
 
@@ -5001,11 +5710,19 @@ border-right
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -5014,7 +5731,11 @@ border-right
 
 
 
+
+
  
+
+
 
 
 
@@ -5028,11 +5749,19 @@ border-right
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -5042,7 +5771,11 @@ border-right
 
 
 
+
+
 	
+
+
 
 
 
@@ -5058,11 +5791,19 @@ border-right
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -5071,7 +5812,11 @@ border-right
 
 
 
+
+
  
+
+
 
 
 
@@ -5085,11 +5830,19 @@ border-right
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -5098,7 +5851,11 @@ border-right
 
 
 
+
+
  
+
+
 
 
 
@@ -5110,11 +5867,19 @@ border-right
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -5123,7 +5888,11 @@ border-right
 
 
 
+
+
  
+
+
 
 
 
@@ -5137,11 +5906,19 @@ border-right
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -5150,7 +5927,11 @@ border-right
 
 
 
+
+
  
+
+
 
 
 
@@ -5162,11 +5943,19 @@ border-right
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -5175,7 +5964,11 @@ border-right
 
 
 
+
+
  
+
+
 
 
 
@@ -5187,11 +5980,19 @@ border-bottom-left-radius
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -5203,11 +6004,19 @@ border-top-left-radius
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -5222,11 +6031,19 @@ border-top-left-radius
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -5235,7 +6052,11 @@ border-top-left-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -5247,11 +6068,19 @@ border-left
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -6340,7 +7169,11 @@ border-left
 	
 	
 	
+	
+	
 	 
+	
+	
 	
 	
 	
@@ -6351,11 +7184,19 @@ border-left
 	
 	
 	
+	
+	
+	
+	
 	:not
 	
 	
 	
+	
+	
 	 
+	
+	
 	
 	
 	
@@ -6364,7 +7205,11 @@ border-left
 	
 	
 	
+	
+	
 	 
+	
+	
 	
 	
 	
@@ -6376,11 +7221,19 @@ border-left
 	
 	
 	
+	
+	
+	
+	
 	:
 	
 	
 	
+	
+	
 	 
+	
+	
 	
 	
 	
@@ -6391,6 +7244,10 @@ border-left
 	
 	
 	
+	
+	
+
+
 
 
 
@@ -6400,7 +7257,11 @@ border-left
 
 
 
+
+
  
+
+
 
 
 
@@ -6411,11 +7272,19 @@ border-left
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -6424,7 +7293,11 @@ border-left
 
 
 
+
+
  
+
+
 
 
 
@@ -6436,11 +7309,19 @@ margin-right
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -6450,7 +7331,11 @@ px
 
 
 
+
+
 	
+
+
 
 
 
@@ -6500,7 +7385,11 @@ px
 	
 	
 	
+	
+	
 	 
+	
+	
 	
 	
 	
@@ -6511,11 +7400,19 @@ px
 	
 	
 	
+	
+	
+	
+	
 	:not
 	
 	
 	
+	
+	
 	 
+	
+	
 	
 	
 	
@@ -6524,7 +7421,11 @@ px
 	
 	
 	
+	
+	
 	 
+	
+	
 	
 	
 	
@@ -6533,7 +7434,11 @@ px
 	
 	
 	
+	
+	
 	 
+	
+	
 	
 	
 	
@@ -6542,7 +7447,11 @@ px
 	
 	
 	
+	
+	
 	 
+	
+	
 	
 	
 	
@@ -6554,11 +7463,19 @@ px
 	
 	
 	
+	
+	
+	
+	
 	:
 	
 	
 	
+	
+	
 	 
+	
+	
 	
 	
 	
@@ -7404,7 +8321,11 @@ button.close {
 
 
 
+
+
  
+
+
 
 
 
@@ -7413,7 +8334,11 @@ button.close {
 
 
 
+
+
  
+
+
 
 
 
@@ -7425,7 +8350,13 @@ margin-left
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -7433,7 +8364,13 @@ margin-left
 
 
 
+
+
 .25rem
+
+
+
+
 
 
 
@@ -7449,7 +8386,11 @@ margin-left
 
 
 
+
+
  
+
+
 
 
 
@@ -7458,7 +8399,11 @@ margin-left
 
 
 
+
+
  
+
+
 
 
 
@@ -7470,7 +8415,13 @@ margin-right
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -7478,7 +8429,13 @@ margin-right
 
 
 
+
+
 .25rem
+
+
+
+
 
 
 
@@ -11277,7 +12234,6 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
 }
 
 p {
-	margin: auto;
 	display: block;
 	width: 100%;
 }

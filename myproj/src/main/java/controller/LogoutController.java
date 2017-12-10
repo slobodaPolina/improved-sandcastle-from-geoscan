@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class LogoutController {
 	@RequestMapping(value = "logout", method = RequestMethod.POST)
-	public String logIn(HttpServletRequest request, Model model) {
+	public String logout(HttpServletRequest request, Model model) {
 		try {
 			HttpSession session = request.getSession();
 			if (session != null) {

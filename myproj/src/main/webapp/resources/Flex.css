@@ -1,0 +1,31 @@
+.FlexBlock {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+#paws {
+	width: 100px;
+	height: 250px;
+	margin: auto;
+}
+
+.content-text {
+	margin-left: 50px;
+}
+
+#Shekspire {
+	width: 150px;
+	height: 150px;
+	margin: auto;
+	display: block;
+}
+
+#infinity {
+	width: 320px;
+	height: 270px;
+}
+
+.blue {
+	background-color: rgb(221, 240, 254);
+}
