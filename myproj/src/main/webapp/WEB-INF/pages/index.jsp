@@ -18,13 +18,13 @@
 	<div id="ENTER">
 		<div class="form_window">
 			<img src="images/close.png">
-			<form action="hello" method="post">
+			<form action="login" method="post">
 				<p>Log in, please</p>
 				<p>
 					Name: <input type="text" name="name" autofocus />
 				</p>
 				<p>
-					Password: <input type="password" name="password">
+					Password: <input type="password" name="password1">
 				</p>
 				<!-- i need it only for avoiding exception, because hello page wants remember parameter from request-->
 				<input type="hidden" name="remember" value="false">

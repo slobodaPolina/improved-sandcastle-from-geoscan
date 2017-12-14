@@ -4,7 +4,6 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 %>
-<%@ page import="helpful.CookieUtils"%>
 
 <%@ page import="helpful.Currency"%>
 

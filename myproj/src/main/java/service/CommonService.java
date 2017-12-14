@@ -5,13 +5,20 @@ import java.util.Enumeration;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import helpful.DBConnector;
-
 @Service
 public class CommonService {
+	@Autowired
+	private DBConnector connector;
+
+	public String getRequestedPage(HttpServletRequest request) {
+		String[] requestArray = request.getRequestURL().toString().split("/");
+		String view = requestArray[requestArray.length - 1];
+		return view;
+	}
 
 	public boolean hasParameter(HttpServletRequest request, String param) {
 		String tmp;
@@ -28,8 +35,7 @@ public class CommonService {
 	public boolean IsSessionActive(HttpServletRequest request) {
 		try {
 			HttpSession session = request.getSession();
-			DBConnector conn = new DBConnector();
-			return conn.IsTheSessionActive((String) (session.getAttribute("name")), session.getId());
+			return connector.IsTheSessionActive((String) (session.getAttribute("name")), session.getId());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -39,26 +45,21 @@ public class CommonService {
 	public void saveSession(HttpServletRequest request, String name) {
 		try {
 			HttpSession session = request.getSession();
-			DBConnector conn = new DBConnector();
-			conn.storeSession(name, session.getId());
+			connector.storeSession(name, session.getId());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
+	//it is not such useful method now
 	public Model fillModel(String userName, Model model) {
-		return fillModel(userName, getRememberStatus(userName), model);
-	}
-
-	public Model fillModel(String userName, boolean remember, Model model) {
 		model.addAttribute("name", userName);
-		model.addAttribute("remember", remember);
 		return model;
 	}
 
-	private boolean getRememberStatus(String userName) {
+
+	public boolean getRememberStatus(String userName) {
 		try {
-			DBConnector connector = new DBConnector();
 			return connector.findRememberStatus(userName);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -1,4 +1,4 @@
-package helpful;
+package service;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,6 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.springframework.stereotype.Service;
+
+
+@Service
 public class DBConnector {
 	Connection conn;
 	Statement stmt;
@@ -51,6 +55,7 @@ public class DBConnector {
 		return false;
 	}
 
+	// EDIT
 	public void storeSession(String name, String id) throws SQLException {
 		stmt.executeUpdate("UPDATE users SET session=\"" + id + "\" where login= \"" + name + "\";");
 	}
