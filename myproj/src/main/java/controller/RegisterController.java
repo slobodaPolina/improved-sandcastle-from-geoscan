@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import service.CommonService;
 import service.DBConnector;
 import service.EmailSender;
+import service.Logger;
 import service.PasswordHasher;
 
 @Controller
@@ -23,6 +24,8 @@ public class RegisterController {
 	private PasswordHasher ph;
 	@Autowired
 	private CommonService commonService;
+	@Autowired
+	Logger logger;
 
 	@RequestMapping(value = "register", method = RequestMethod.POST)
 	public String Register(HttpServletRequest request, HttpServletResponse response, Model model) {
@@ -31,22 +34,26 @@ public class RegisterController {
 			String name = request.getParameter("name");
 			String email = request.getParameter("email");
 			String password = request.getParameter("password");
-			
+
 			String remember = "false";
 			if (commonService.hasParameter(request, "remember"))
 				remember = "true";
-			
+
 			boolean exists = connector.exists(name, email);
 			if (!exists) {
-				connector.insertUser(name, email, ph.hash(password, "MD5"));
-//				sender.send(email);
-				System.out.println("It`s ok, i have created your account");
-				request.getSession().setAttribute("name", name);
-				request.getSession().setAttribute("password", password);
-				request.getSession().setAttribute("remember", remember);
-				return "redirect:login";
+				if (password != "") {
+					connector.insertUser(name, email, ph.hash(password, "MD5"));
+					// sender.send(email);
+					request.getSession().setAttribute("name", name);
+					request.getSession().setAttribute("password", password);
+					request.getSession().setAttribute("remember", remember);
+					logger.logSuccessfulRegistration(name);
+					return "redirect:login";
+				}
+				logger.logNoPassword(name);
+				return "redirect:/";
 			}
-			System.out.println("Seems like your user name or your email is used already");
+			logger.logInvalidEmailLogin(name, email);
 			return "redirect:/";
 		} catch (Exception e) {
 			e.printStackTrace();

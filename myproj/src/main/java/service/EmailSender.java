@@ -21,7 +21,6 @@ public class EmailSender {
 	public void send(String receiver) throws EmailException, FileNotFoundException, IOException {
 		Properties props = new Properties();
 		props.load(propsResource.getInputStream());
-				//"C:\\Users\\Полина\\git\\myproj\\src\\main\\resources\\props.properties"));
 		Email email = new SimpleEmail();
 		
 		email.setHostName(props.getProperty("mail.host"));

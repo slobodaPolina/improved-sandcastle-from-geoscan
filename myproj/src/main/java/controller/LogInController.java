@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import service.CommonService;
 import service.CookieUtils;
 import service.DBConnector;
+import service.Logger;
 import service.PasswordHasher;
 
 @Controller
@@ -25,6 +26,8 @@ public class LogInController {
 	private CookieUtils cookieUtils;
 	@Autowired
 	private PasswordHasher ph;
+	@Autowired
+	private Logger logger;
 
 	@RequestMapping(value = "login", method = { RequestMethod.GET, RequestMethod.POST })
 	public String logIn(HttpServletRequest request, HttpServletResponse response, Model model) {
@@ -41,15 +44,17 @@ public class LogInController {
 					password = request.getParameter("password");
 					if (commonService.hasParameter(request, "remember"))
 						remember = "true";
-				} else {// he is registrating
+				} else {// he is registrating or authorised from the cookies
 					userName = (String) request.getSession().getAttribute("name");
 					password = (String) request.getSession().getAttribute("password");
 					remember = (String) request.getSession().getAttribute("remember");
 				}
 				String res = connector.findPassword(userName);
-				password = ph.hash(password, "MD5");
-				if (res.equals(password)) {
-					System.out.println("You successfully have logged in");
+				String hashedPassword = ph.hash(password, "MD5");
+				// !! I dont know exactly if the password here hashed or not. If the user is
+				// authorised from the index by cookies password is hashed otherwise it is not
+				if (res != "" && (res.equals(password) || res.equals(hashedPassword))) {
+					logger.logSuccessfulAuthorisation(userName);
 					connector.storeRememberStatus(userName, remember);
 					commonService.fillModel(userName, model);
 					HttpSession session = request.getSession(true);
@@ -57,18 +62,14 @@ public class LogInController {
 					commonService.saveSession(request, userName);
 					if (commonService.getRememberStatus(userName)) {
 						cookieUtils.SetCookies(request, response);
-						System.out.println("I have stored your data in your cookies");
 					}
 					return "hello";
 				} else {
-					System.out.println("Your password is wrong!");
+					logger.logInvalidPassword(userName);
 				}
 			} else {// it means the user is authorised and has pressed the button "main page"
-				System.out.println("You are authorised");
 				if (commonService.IsSessionActive(request))
 					return "hello";
-				else
-					System.out.println("Has your session time ended?..");
 			}
 			return "redirect:index";
 		} catch (Exception e) {

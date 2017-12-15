@@ -26,11 +26,10 @@ public class IndexController {
 			throws IOException, SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 
 		System.out.println("------ INDEX CONTROLLER ------");
-		// if here is an exit parameter it means the user has just logged out, i dont
-		// have to authorise him
+		// if here is an exit parameter it means the user has just logged out
+		// so i dont have to authorise him
 		try {
 			if (request.getSession().getAttribute("exit") != null) {
-				System.out.println("You have exited just now, so i won`t try to authorise u again");
 				return "index";
 			}
 			String[] array = cookieUtils.getUserCookies(request);
@@ -42,6 +41,9 @@ public class IndexController {
 				String dataPass = connector.findPassword(userName);
 				if (dataPass.equals(userPass)) {
 					System.out.println("I found the data to authorise you!");
+					request.getSession().setAttribute("name", userName);
+					request.getSession().setAttribute("password", userPass);
+					request.getSession().setAttribute("remember", "true");
 					return "redirect:login";
 				} else {
 					System.out.println("Your cookies are incorrect, sorry..");

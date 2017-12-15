@@ -46,7 +46,7 @@ public class CookieUtils {
 		cookieUserName.setMaxAge(cookieTime);
 		response.addCookie(cookieUserName);
 
-		String userPass = request.getParameter("password1");
+		String userPass = request.getParameter("password");
 		// pass might be null if i was automatically authorised using cookies, so there
 		// was no password in request
 		if (userPass != null) {
