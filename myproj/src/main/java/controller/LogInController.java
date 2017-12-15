@@ -10,10 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import helpful.PasswordHasher;
 import service.CommonService;
 import service.CookieUtils;
 import service.DBConnector;
+import service.PasswordHasher;
 
 @Controller
 public class LogInController {
@@ -23,18 +23,28 @@ public class LogInController {
 	private DBConnector connector;
 	@Autowired
 	private CookieUtils cookieUtils;
+	@Autowired
+	private PasswordHasher ph;
 
 	@RequestMapping(value = "login", method = { RequestMethod.GET, RequestMethod.POST })
 	public String logIn(HttpServletRequest request, HttpServletResponse response, Model model) {
 		try {
-			System.out.println("LOGIN CONTROLLER");
+			System.out.println("------ LOGIN CONTROLLER ------");
 			// it is logging in
-			if (commonService.hasParameter(request, "name") && commonService.hasParameter(request, "password1")) {
-				String userName = request.getParameter("name");
-				String password = request.getParameter("password1");
+			if ((commonService.hasParameter(request, "name") && commonService.hasParameter(request, "password"))
+					|| (request.getSession().getAttribute("name") != null
+							&& request.getSession().getAttribute("password") != null)) {
+				String userName, password;
+				// it means the user is just logging in
+				if (commonService.hasParameter(request, "name") && commonService.hasParameter(request, "password")) {
+					userName = request.getParameter("name");
+					password = request.getParameter("password");
+				} else {// he is registrating
+					userName = (String) request.getSession().getAttribute("name");
+					password = (String) request.getSession().getAttribute("password");
+				}
 				String res = connector.findPassword(userName);
-				PasswordHasher ph = new PasswordHasher("MD5");
-				password = ph.hash(password);
+				password = ph.hash(password, "MD5");
 				if (res.equals(password)) {
 					System.out.println("You successfully have logged in");
 					commonService.fillModel(userName, model);
@@ -48,15 +58,15 @@ public class LogInController {
 					return "hello";
 				} else {
 					System.out.println("Your password is wrong!");
-					return "index";
 				}
 			} else {// it means the user is authorised and has pressed the button "main page"
-				if (commonService.IsSessionActive(request)) {
+				System.out.println("You are authorised");
+				if (commonService.IsSessionActive(request))
 					return "hello";
-				} else {
-					return "index";
-				}
+				else
+					System.out.println("Has your session time ended?..");
 			}
+			return "redirect:index";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "exception";

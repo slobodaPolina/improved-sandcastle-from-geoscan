@@ -11,14 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import service.CommonService;
 import service.CookieUtils;
 import service.DBConnector;
 
 @Controller
 public class IndexController {
-	@Autowired
-	private CommonService commonService;
 	@Autowired
 	private DBConnector connector;
 	@Autowired
@@ -28,7 +25,7 @@ public class IndexController {
 	public String index(Model model, HttpServletRequest request, HttpServletResponse response)
 			throws IOException, SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 
-		System.out.println("I am in Index Controller");
+		System.out.println("------ INDEX CONTROLLER ------");
 		// if here is an exit parameter it means the user has just logged out, i dont
 		// have to authorise him
 		try {
@@ -45,14 +42,9 @@ public class IndexController {
 				String dataPass = connector.findPassword(userName);
 				if (dataPass.equals(userPass)) {
 					System.out.println("I found the data to authorise you!");
-					model = commonService.fillModel(userName, model);
-					if (commonService.getRememberStatus(userName)) {
-						cookieUtils.SetCookies(request, response);
-						System.out.println("I have stored your data in your cookies");
-					}
-					return "hello";
+					return "redirect:login";
 				} else {
-					System.out.println("Your password is incorrect, please try again");
+					System.out.println("Your cookies are incorrect, sorry..");
 				}
 			}
 			return "index";

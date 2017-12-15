@@ -24,7 +24,7 @@
 					Name: <input type="text" name="name" autofocus />
 				</p>
 				<p>
-					Password: <input type="password" name="password1">
+					Password: <input type="password" name="password">
 				</p>
 				<!-- i need it only for avoiding exception, because hello page wants remember parameter from request-->
 				<input type="hidden" name="remember" value="false">
@@ -47,7 +47,7 @@
 				<input type="text" name="name" id="UserName"
 					onkeyup="CheckRegInfo()">
 				<p>Password:</p>
-				<input type="password" id="pass1" name="password1"
+				<input type="password" id="pass1" name="password"
 					onkeyup="CheckRegInfo()">
 				<p>Confirm your password:</p>
 				<input type="password" id="pass2" name="password2"
@@ -61,7 +61,7 @@
 				</label>
 				<p>
 					<input type="submit" id="RegisterButton" value="Register"
-						class="sumbit-button" disabled />
+						class="submit-button" disabled />
 				</p>
 			</form>
 		</div>

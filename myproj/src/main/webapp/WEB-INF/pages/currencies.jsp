@@ -12,6 +12,7 @@
 <head>
 <link href="<c:url value="/resources/Bootstrap.css" />" rel="stylesheet" />
 <link href="<c:url value="/resources/styles.css" />" rel="stylesheet" />
+<link rel="shortcut icon" type="image/gif" href="images/icon.gif" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>currencies</title>
 </head>

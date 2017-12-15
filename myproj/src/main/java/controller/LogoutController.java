@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class LogoutController {
 	@RequestMapping(value = "logout", method = RequestMethod.POST)
 	public String logout(HttpServletRequest request, HttpServletResponse response, Model model) {
+		System.out.println("------ LOGOUT CONTROLLER ------");
 		try {
 			HttpSession session = request.getSession();
 			if (session != null) {

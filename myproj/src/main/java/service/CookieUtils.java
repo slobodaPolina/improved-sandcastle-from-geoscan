@@ -9,12 +9,14 @@ import java.util.Date;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.springframework.stereotype.Service;
 
-import helpful.PasswordHasher;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class CookieUtils {
+	@Autowired
+	private PasswordHasher ph;
 	public String[] getUserCookies(HttpServletRequest request) throws IOException {
 		// Get an array of Cookies associated with this domain...
 		Cookie[] cookies = request.getCookies();
@@ -48,8 +50,7 @@ public class CookieUtils {
 		// pass might be null if i was automatically authorised using cookies, so there
 		// was no password in request
 		if (userPass != null) {
-			PasswordHasher ph = new PasswordHasher("MD5");
-			userPass = ph.hash(userPass);// is it ok that here is no pass?..idk
+			userPass = ph.hash(userPass, "MD5");// is it ok that here is no pass?..idk
 		}
 		Cookie cookieUserPass = new Cookie("userPass", userPass);
 		cookieUserPass.setMaxAge(cookieTime);

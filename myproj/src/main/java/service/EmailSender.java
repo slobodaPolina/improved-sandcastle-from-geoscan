@@ -29,7 +29,7 @@ public class EmailSender {
 		// from where
 		email.setAuthenticator(
 				new DefaultAuthenticator(props.getProperty("mail.username"), props.getProperty("mail.password")));
-		email.setTLS(true);
+		email.setStartTLSEnabled(true);
 		email.setFrom(props.getProperty("mail.username"));
 		email.setSubject(props.getProperty("mail.subject"));
 		email.setMsg(props.getProperty("mail.text"));
