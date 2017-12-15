@@ -34,19 +34,23 @@ public class LogInController {
 			if ((commonService.hasParameter(request, "name") && commonService.hasParameter(request, "password"))
 					|| (request.getSession().getAttribute("name") != null
 							&& request.getSession().getAttribute("password") != null)) {
-				String userName, password;
+				String userName, password, remember = "false";
 				// it means the user is just logging in
 				if (commonService.hasParameter(request, "name") && commonService.hasParameter(request, "password")) {
 					userName = request.getParameter("name");
 					password = request.getParameter("password");
+					if (commonService.hasParameter(request, "remember"))
+						remember = "true";
 				} else {// he is registrating
 					userName = (String) request.getSession().getAttribute("name");
 					password = (String) request.getSession().getAttribute("password");
+					remember = (String) request.getSession().getAttribute("remember");
 				}
 				String res = connector.findPassword(userName);
 				password = ph.hash(password, "MD5");
 				if (res.equals(password)) {
 					System.out.println("You successfully have logged in");
+					connector.storeRememberStatus(userName, remember);
 					commonService.fillModel(userName, model);
 					HttpSession session = request.getSession(true);
 					session.setAttribute("name", userName);

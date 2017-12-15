@@ -26,8 +26,8 @@
 				<p>
 					Password: <input type="password" name="password">
 				</p>
-				<!-- i need it only for avoiding exception, because hello page wants remember parameter from request-->
-				<input type="hidden" name="remember" value="false">
+				<label><input type="checkbox" name="remember" value="true"
+					checked> Remember me!</label>
 				<p>
 					<input type="submit" value="Log In" class="submit-button" />
 				</p>
@@ -53,12 +53,8 @@
 				<input type="password" id="pass2" name="password2"
 					onkeyup="CheckRegInfo()">
 				<p id="RegErrors">Type all the info and log in:)</p>
-				<!-- The thing below i need to put "remember" in the request anyway,
-					even if the user missed the tick -->
-				<label><input type="radio" name="remember" value="true"
-					checked> Remember me!</label> <label> <input type="radio"
-					name="remember" value="false"> Don`t do it
-				</label>
+				<label><input type="checkbox" name="remember" value="true"
+					checked> Remember me!</label>
 				<p>
 					<input type="submit" id="RegisterButton" value="Register"
 						class="submit-button" disabled />

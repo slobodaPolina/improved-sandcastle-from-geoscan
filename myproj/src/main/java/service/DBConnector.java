@@ -8,7 +8,6 @@ import java.sql.Statement;
 
 import org.springframework.stereotype.Service;
 
-
 @Service
 public class DBConnector {
 	Connection conn;
@@ -33,10 +32,10 @@ public class DBConnector {
 		return res.next();
 	}
 
-	public void insertUser(String name, String email, String password, String remember) throws SQLException {
+	public void insertUser(String name, String email, String password) throws SQLException {
 		// inserts new user in database
-		stmt.executeUpdate("INSERT INTO users (login, email, password, remember) VALUES (\"" + name + "\", \"" + email
-				+ "\", \"" + password + "\", \"" + remember + "\");");
+		stmt.executeUpdate("INSERT INTO users (login, email, password) VALUES (\"" + name + "\", \"" + email + "\", \""
+				+ password + "\");");
 	}
 
 	public String findPassword(String name) throws SQLException {
@@ -58,6 +57,10 @@ public class DBConnector {
 	// EDIT
 	public void storeSession(String name, String id) throws SQLException {
 		stmt.executeUpdate("UPDATE users SET session=\"" + id + "\" where login= \"" + name + "\";");
+	}
+
+	public void storeRememberStatus(String name, String remember) throws SQLException {
+		stmt.executeUpdate("UPDATE users SET remember=\"" + remember + "\" where login= \"" + name + "\";");
 	}
 
 	public boolean IsTheSessionActive(String name, String id) throws SQLException {
