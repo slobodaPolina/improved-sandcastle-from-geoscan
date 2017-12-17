@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import service.CommonService;
 import service.CookieUtils;
 import service.DBConnector;
-import service.Logger;
+import service.MyLogger;
 import service.PasswordHasher;
 
 @Controller
@@ -27,7 +27,7 @@ public class LogInController {
 	@Autowired
 	private PasswordHasher ph;
 	@Autowired
-	private Logger logger;
+	private MyLogger logger;
 
 	@RequestMapping(value = "login", method = { RequestMethod.GET, RequestMethod.POST })
 	public String logIn(HttpServletRequest request, HttpServletResponse response, Model model) {

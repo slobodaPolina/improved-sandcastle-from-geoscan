@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import service.CommonService;
 import service.DBConnector;
 import service.EmailSender;
-import service.Logger;
+import service.MyLogger;
 import service.PasswordHasher;
 
 @Controller
@@ -25,7 +25,7 @@ public class RegisterController {
 	@Autowired
 	private CommonService commonService;
 	@Autowired
-	Logger logger;
+	MyLogger logger;
 
 	@RequestMapping(value = "register", method = RequestMethod.POST)
 	public String Register(HttpServletRequest request, HttpServletResponse response, Model model) {

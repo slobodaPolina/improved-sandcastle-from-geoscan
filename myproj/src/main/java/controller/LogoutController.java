@@ -10,12 +10,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import service.Logger;
+import service.MyLogger;
 
 @Controller
 public class LogoutController {
 	@Autowired
-	Logger logger;
+	MyLogger logger;
 
 	@RequestMapping(value = "logout", method = RequestMethod.POST)
 	public String logout(HttpServletRequest request, HttpServletResponse response, Model model) {

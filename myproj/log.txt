@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="windows-1251" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2017-12-17T19:02:29</date>
+  <millis>1513526549835</millis>
+  <sequence>41</sequence>
+  <logger>service.MyLogger</logger>
+  <level>INFO</level>
+  <class>service.MyLogger</class>
+  <method>logLogout</method>
+  <thread>28</thread>
+  <message>The user named null has logged out</message>
+</record>
+<record>
+  <date>2017-12-17T19:03:05</date>
+  <millis>1513526585560</millis>
+  <sequence>42</sequence>
+  <logger>service.MyLogger</logger>
+  <level>INFO</level>
+  <class>service.MyLogger</class>
+  <method>logSuccessfulAuthorisation</method>
+  <thread>32</thread>
+  <message>The user named polina has successfully authorised</message>
+</record>
