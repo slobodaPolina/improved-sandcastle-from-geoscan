@@ -26,7 +26,7 @@ public class LogoutController {
 			if (session != null) {
 				session.invalidate();
 			}
-			request.getSession().setAttribute("exit", "true");
+			//request.getSession().setAttribute("name", null);
 			return "redirect:/";
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -56,9 +56,9 @@ public class RegisterController {
 			logger.logInvalidEmailLogin(name, email);
 			return "redirect:/";
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("registration failed", e);
+			return "exception";
 		}
-		return "exception";
 	}
 
 }

@@ -38,7 +38,7 @@ public class CookieUtils {
 		return array;
 	}
 
-	public void SetCookies(HttpServletRequest request, HttpServletResponse response) throws NoSuchAlgorithmException {
+	public void setCookies(HttpServletRequest request, HttpServletResponse response) throws NoSuchAlgorithmException {
 		int cookieTime = 24 * 60 * 60;// it is the time which cookies are storing in user`s browser
 		String userName = request.getParameter("name");
 		Cookie cookieUserName = new Cookie("userName", userName);

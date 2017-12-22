@@ -29,7 +29,7 @@ public class IndexController {
 		// if here is an exit parameter it means the user has just logged out
 		// so i dont have to authorise him
 		try {
-			if (request.getSession().getAttribute("exit") != null) {
+			if (request.getSession().getAttribute("name") == null) {
 				return "index";
 			}
 			String[] array = cookieUtils.getUserCookies(request);

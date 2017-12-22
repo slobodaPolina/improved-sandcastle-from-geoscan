@@ -6,13 +6,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import dao.UserDao;
+import entity.User;
 
 @Service
 public class DBConnector {
 	Connection conn;
 	Statement stmt;
 	ResultSet res;
+	@Autowired
+	private UserDao userDao;
 
 	// NUMERATION OF COLUMNS in ResultSet FROM 1.
 	// WHEN YOU START THE ACTIONS, YOU ARE BEFORE THE FIRST LINE
@@ -32,10 +40,10 @@ public class DBConnector {
 		return res.next();
 	}
 
-	public void insertUser(String name, String email, String password) throws SQLException {
-		// inserts new user in database
-		stmt.executeUpdate("INSERT INTO users (login, email, password) VALUES (\"" + name + "\", \"" + email + "\", \""
-				+ password + "\");");
+	@Transactional(readOnly = false)
+	public void insertUser(String name, String email, String password) {
+		User user = new User(name, email, password);
+		userDao.create(user);
 	}
 
 	public String findPassword(String name) throws SQLException {

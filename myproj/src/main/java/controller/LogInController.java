@@ -61,7 +61,9 @@ public class LogInController {
 					session.setAttribute("name", userName);
 					commonService.saveSession(request, userName);
 					if (commonService.getRememberStatus(userName)) {
-						cookieUtils.SetCookies(request, response);
+						request.getSession().setMaxInactiveInterval(Integer.MAX_VALUE);
+					} else {
+						request.getSession().setMaxInactiveInterval(1800);
 					}
 					return "hello";
 				} else {
@@ -78,5 +80,7 @@ public class LogInController {
 		}
 		// наследование спп: одинаковые методы родителей?
 	}
+	
+	
 
 }
