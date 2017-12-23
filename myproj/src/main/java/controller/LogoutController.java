@@ -23,11 +23,7 @@ public class LogoutController {
 		try {
 			HttpSession session = request.getSession();
 			logger.logLogout((String) session.getAttribute("name"));
-			if (session != null) {
-				session.invalidate();
-			}
-			//request.getSession().setAttribute("name", null);
-			return "redirect:/";
+			return "redirect:login";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "exception";

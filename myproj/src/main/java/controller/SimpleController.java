@@ -23,7 +23,7 @@ public class SimpleController {
 				return commonService.getRequestedPage(request);
 			} else {
 				System.out.println("You have loged out! Log in again,  please");
-				return "index";
+				return "redirect:login";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

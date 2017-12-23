@@ -1,5 +1,6 @@
 package service;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +13,11 @@ import org.springframework.ui.Model;
 @Service
 public class CommonService {
 	@Autowired
-	private DBConnector connector;
+	DBConnector connector;
+	@Autowired
+	PasswordHasher ph;
+	@Autowired
+	private MyLogger logger;
 
 	public String getRequestedPage(HttpServletRequest request) {
 		String[] requestArray = request.getRequestURL().toString().split("/");
@@ -32,38 +37,33 @@ public class CommonService {
 		return false;
 	}
 
+	public String login(HttpServletRequest request, String name, String password, String remember, Model model) {
+		try {
+			String hashedPassword = ph.hash(password, "MD5");
+			String res = connector.findPassword(name);
+			if (res.equals(hashedPassword)) {
+				logger.logSuccessfulAuthorisation(name);
+				HttpSession session = request.getSession(true);
+				session.setAttribute("name", name);
+				if ("true".equals(remember))
+					request.getSession().setMaxInactiveInterval(Integer.MAX_VALUE);
+				else
+					request.getSession().setMaxInactiveInterval(5);// 1800
+				return "redirect:/";
+			} else {
+				logger.logInvalidPassword(name);
+				return "redirect:login";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("exception", e.getMessage());
+			return "exception";
+		}
+	}
+
 	public boolean IsSessionActive(HttpServletRequest request) {
-		try {
-			HttpSession session = request.getSession();
-			return connector.IsTheSessionActive((String) (session.getAttribute("name")), session.getId());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
-
-	public void saveSession(HttpServletRequest request, String name) {
-		try {
-			HttpSession session = request.getSession();
-			connector.storeSession(name, session.getId());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	//it is not such useful method now
-	public Model fillModel(String userName, Model model) {
-		model.addAttribute("name", userName);
-		return model;
-	}
-
-
-	public boolean getRememberStatus(String userName) {
-		try {
-			return connector.findRememberStatus(userName);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return false;
+		// here i wanna check if the user is authorised but not sure if
+		// it is correct
+		return (request.getSession().getAttribute("name") != null);
 	}
 }

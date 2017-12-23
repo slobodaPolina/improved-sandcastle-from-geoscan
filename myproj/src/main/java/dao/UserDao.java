@@ -1,7 +1,5 @@
 package dao;
 
-import java.util.List;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -38,10 +36,13 @@ public class UserDao {
 		if (user == null) {
 			Query query = session.createQuery("select email from User where email=:email");
 			query.setParameter("email", email);
-			//if there is no user with this email
-			if (query.list().size() == 0)
+			// if there is no user with this email
+			if (query.list().size() == 0) {
+				session.getTransaction().commit();
 				return false;
+			}
 		}
+		session.getTransaction().commit();
 		return true;
 	}
 

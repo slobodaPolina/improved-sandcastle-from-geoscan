@@ -39,22 +39,18 @@ public class RegisterController {
 			if (commonService.hasParameter(request, "remember"))
 				remember = "true";
 
-			boolean exists = connector.exists(name, email);
-			if (!exists) {
-				if (password != "") {
+			if (!connector.exists(name, email)) {
+				if (!"".equals(password)) {
 					connector.insertUser(name, email, ph.hash(password, "MD5"));
 					// sender.send(email);
-					request.getSession().setAttribute("name", name);
-					request.getSession().setAttribute("password", password);
-					request.getSession().setAttribute("remember", remember);
 					logger.logSuccessfulRegistration(name);
-					return "redirect:login";
+					return commonService.login(request, name, password, remember, model);
 				}
 				logger.logNoPassword(name);
-				return "redirect:/";
+				return "redirect:login";
 			}
 			logger.logInvalidEmailLogin(name, email);
-			return "redirect:/";
+			return "redirect:login";
 		} catch (Exception e) {
 			logger.error("registration failed", e);
 			return "exception";

@@ -31,7 +31,7 @@ public class CurrenciesController {
 				return "currencies";
 			} else {
 				System.out.println("You have loged out! Log in again,  please");
-				return "index";
+				return "redirect:login";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
