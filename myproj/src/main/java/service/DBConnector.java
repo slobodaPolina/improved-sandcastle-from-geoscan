@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,11 +21,6 @@ public class DBConnector {
 	@Autowired
 	private UserDao userDao;
 
-	// NUMERATION OF COLUMNS in ResultSet FROM 1.
-	// WHEN YOU START THE ACTIONS, YOU ARE BEFORE THE FIRST LINE
-	// SO DO NEXT() AND GETSTRING(1) TO GET THE FIRST
-	// i know here only 1 column (i ask only for the password)
-	// and MUST be only 1 line
 	public DBConnector() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
 		conn = DriverManager
@@ -35,9 +29,10 @@ public class DBConnector {
 	}
 
 	public boolean exists(String name, String email) throws SQLException {
+		return userDao.exists(name, email);
 		// checkes if db includes a user with sch login or such email
-		res = stmt.executeQuery("SELECT * FROM users WHERE login = \"" + name + "\" OR email = \"" + email + "\";");
-		return res.next();
+		/*res = stmt.executeQuery("SELECT * FROM users WHERE login = \"" + name + "\" OR email = \"" + email + "\";");
+		return res.next();*/
 	}
 
 	@Transactional(readOnly = false)
@@ -46,13 +41,9 @@ public class DBConnector {
 		userDao.create(user);
 	}
 
-	public String findPassword(String name) throws SQLException {
-		// returns user`s password
-		ResultSet res = stmt.executeQuery("SELECT password FROM users WHERE login = \"" + name + "\";");
-		if (res.next())
-			return res.getString(1);
-		else
-			return "";
+	@Transactional(readOnly = false)
+	public String findPassword(String name) {
+		return userDao.getPassword(name);
 	}
 
 	public boolean findRememberStatus(String name) throws SQLException {
@@ -62,7 +53,6 @@ public class DBConnector {
 		return false;
 	}
 
-	// EDIT
 	public void storeSession(String name, String id) throws SQLException {
 		stmt.executeUpdate("UPDATE users SET session=\"" + id + "\" where login= \"" + name + "\";");
 	}

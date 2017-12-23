@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import service.CommonService;
-import service.CookieUtils;
 import service.DBConnector;
 import service.MyLogger;
 import service.PasswordHasher;
@@ -22,8 +21,6 @@ public class LogInController {
 	private CommonService commonService;
 	@Autowired
 	private DBConnector connector;
-	@Autowired
-	private CookieUtils cookieUtils;
 	@Autowired
 	private PasswordHasher ph;
 	@Autowired
@@ -76,11 +73,10 @@ public class LogInController {
 			return "redirect:index";
 		} catch (Exception e) {
 			e.printStackTrace();
+			model.addAttribute("exception", e.getMessage());
 			return "exception";
 		}
 		// наследование спп: одинаковые методы родителей?
 	}
-	
-	
 
 }

@@ -9,5 +9,6 @@
 <body>
 	<p>Hello, my lovely friend! If you are here the exception has been
 		thrown:) Watch eclipse logs to watch out that exactly is bad.</p>
+	"${exception}"
 </body>
 </html>

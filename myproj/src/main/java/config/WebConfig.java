@@ -30,7 +30,6 @@ public class WebConfig implements WebMvcConfigurer {
 		resolver.setSuffix(".jsp");
 		resolver.setExposeContextBeansAsAttributes(true);
 		return resolver;
-
 	}
 	
 	@Bean
@@ -40,7 +39,6 @@ public class WebConfig implements WebMvcConfigurer {
 		dataSource.setUsername("root");
 		dataSource.setPassword("1234");
 		dataSource.setUrl("jdbc:mysql://localhost/world?serverTimezone=Europe/Moscow");
-		dataSource.setValidationQuery("SELECT 1");
 		
 		LocalSessionFactoryBuilder configuration = new LocalSessionFactoryBuilder(dataSource);
 		configuration.scanPackages("entity");

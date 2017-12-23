@@ -1,8 +1,6 @@
 package service;
 
 import java.io.IOException;
-import java.util.logging.ConsoleHandler;
-import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
@@ -16,8 +14,6 @@ public class MyLogger {
 
 	public MyLogger() throws IOException {
 		logger = Logger.getLogger(MyLogger.class.getName());
-//		FileHandler fh = new FileHandler(
-//				"C:\\Users\\Полина\\git\\myproj\\log.txt");
 		if (System.getProperty("debug") != null) {
 			CustomOutputHandler handler = new CustomOutputHandler();
 			handler.setFormatter(new SimpleFormatter());
@@ -27,7 +23,7 @@ public class MyLogger {
 
 	public void logInvalidEmailLogin(String name, String email) {
 		logger.log(Level.INFO,
-					"Invalid registration try: login " + name + " or email " + email + "has already been used");
+					"Invalid registration try: login " + name + " or email " + email + " has already been used");
 	}
 
 	public void logSuccessfulAuthorisation(String name) {
