@@ -24,7 +24,7 @@ public class CurrenciesController {
 
 	public String Currencies(HttpServletRequest request, Model model) {
 		try {
-			if (commonService.IsSessionActive(request)) {
+			if (commonService.isTheUserAuthorised(request)) {
 				ArrayList<Currency> list = browser.getCbrInfo();
 				model.addAttribute("list", list);
 				System.out.println("Your session is ok");

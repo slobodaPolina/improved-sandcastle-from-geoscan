@@ -18,7 +18,7 @@ public class SimpleController {
 			"sandbox" }, method = { RequestMethod.GET })
 	public String SimpleCont(HttpServletRequest request, Model model) {
 		try {
-			if (commonService.IsSessionActive(request)) {
+			if (commonService.isTheUserAuthorised(request)) {
 				System.out.println("Your session is ok");
 				return commonService.getRequestedPage(request);
 			} else {

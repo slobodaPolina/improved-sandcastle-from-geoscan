@@ -23,7 +23,7 @@ public class IndexController {
 	public String index(Model model, HttpServletRequest request, HttpServletResponse response)
 			throws IOException, SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 		System.out.println("------ INDEX CONTROLLER ------");
-		if (commonService.IsSessionActive(request)) {
+		if (commonService.isTheUserAuthorised(request)) {//не видит здесь, что сессия активна. Не видит после разлогированияв соседней вкладке, что надо залогироваться
 			return "hello";
 		}
 		return "redirect:login";

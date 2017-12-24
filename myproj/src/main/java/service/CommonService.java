@@ -45,6 +45,7 @@ public class CommonService {
 				logger.logSuccessfulAuthorisation(name);
 				HttpSession session = request.getSession(true);
 				session.setAttribute("name", name);
+				session.setAttribute("status", "authorised");
 				if ("true".equals(remember))
 					request.getSession().setMaxInactiveInterval(Integer.MAX_VALUE);
 				else
@@ -61,9 +62,10 @@ public class CommonService {
 		}
 	}
 
-	public boolean IsSessionActive(HttpServletRequest request) {
+	public boolean isTheUserAuthorised(HttpServletRequest request) {
 		// here i wanna check if the user is authorised but not sure if
 		// it is correct
-		return (request.getSession().getAttribute("name") != null);
+		String status = (String) request.getSession().getAttribute("status");
+		return (status == "authorised");
 	}
 }
