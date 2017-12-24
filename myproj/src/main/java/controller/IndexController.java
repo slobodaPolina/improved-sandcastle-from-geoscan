@@ -1,7 +1,5 @@
 package controller;
 
-import java.io.IOException;
-import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,15 +16,17 @@ public class IndexController {
 	@Autowired
 	private CommonService commonService;
 
-	// TO DO: change the constructors so that the index is login one
-	@RequestMapping(value = { "/", "index" }, method = { RequestMethod.GET, RequestMethod.POST })
-	public String index(Model model, HttpServletRequest request, HttpServletResponse response)
-			throws IOException, SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
-		System.out.println("------ INDEX CONTROLLER ------");
-		if (commonService.isTheUserAuthorised(request)) {//не видит здесь, что сессия активна. Не видит после разлогированияв соседней вкладке, что надо залогироваться
-			return "hello";
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String index(Model model, HttpServletRequest request, HttpServletResponse response) {
+		try {
+			System.out.println("------ INDEX CONTROLLER ------");
+			if (commonService.isTheUserAuthorised(request)) {
+				return "hello";
+			}
+			return "redirect:login";
+		} catch (Exception e) {
+			return commonService.handleException(e, model);
 		}
-		return "redirect:login";
 	}
 
 }

@@ -34,8 +34,7 @@ public class CurrenciesController {
 				return "redirect:login";
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-			return "exception";
+			return commonService.handleException(e, model);
 		}
 	}
 

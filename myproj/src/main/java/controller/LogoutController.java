@@ -10,12 +10,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import service.CommonService;
 import service.MyLogger;
 
 @Controller
 public class LogoutController {
 	@Autowired
 	MyLogger logger;
+	@Autowired
+	CommonService commonService;
 
 	@RequestMapping(value = "logout", method = RequestMethod.POST)
 	public String logout(HttpServletRequest request, HttpServletResponse response, Model model) {
@@ -26,10 +29,8 @@ public class LogoutController {
 			logger.logLogout((String) session.getAttribute("name"));
 			return "redirect:login";
 		} catch (Exception e) {
-			e.printStackTrace();
-			return "exception";
+			return commonService.handleException(e, model);
 		}
-		// наследование спп: одинаковые методы родителей?
 	}
 
 }

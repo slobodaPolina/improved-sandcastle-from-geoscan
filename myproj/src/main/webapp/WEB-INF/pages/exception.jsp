@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Exception page</title>
 </head>
 <body>
 	<p>Hello, my lovely friend! If you are here the exception has been
 		thrown:) Watch eclipse logs to watch out that exactly is bad.</p>
-	"${exception}"
+	<p>The short exception message is "${exception}"</p>
 </body>
 </html>

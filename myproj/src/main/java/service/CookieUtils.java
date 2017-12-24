@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CookieUtils {
+	//UNUSED CLASS
 	@Autowired
 	private PasswordHasher ph;
 	public String[] getUserCookies(HttpServletRequest request) throws IOException {

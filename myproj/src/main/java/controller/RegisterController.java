@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import service.CommonService;
 import service.DBConnector;
@@ -28,13 +29,10 @@ public class RegisterController {
 	MyLogger logger;
 
 	@RequestMapping(value = "register", method = RequestMethod.POST)
-	public String Register(HttpServletRequest request, HttpServletResponse response, Model model) {
+	public String Register(@RequestParam String name, @RequestParam String email, @RequestParam String password,
+			HttpServletRequest request, HttpServletResponse response, Model model) {
 		System.out.println("------ REGISTER CONTROLLER ------");
 		try {
-			String name = request.getParameter("name");
-			String email = request.getParameter("email");
-			String password = request.getParameter("password");
-
 			String remember = "false";
 			if (commonService.hasParameter(request, "remember"))
 				remember = "true";
@@ -53,7 +51,7 @@ public class RegisterController {
 			return "redirect:login";
 		} catch (Exception e) {
 			logger.error("registration failed", e);
-			return "exception";
+			return commonService.handleException(e, model);
 		}
 	}
 

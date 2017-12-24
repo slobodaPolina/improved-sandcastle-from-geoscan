@@ -37,8 +37,8 @@ public class CommonService {
 		return false;
 	}
 
-	public String login(HttpServletRequest request, String name, String password, String remember, Model model) {
-		try {
+	public String login(HttpServletRequest request, String name, String password, String remember, Model model)
+			throws NoSuchAlgorithmException {
 			String hashedPassword = ph.hash(password, "MD5");
 			String res = connector.findPassword(name);
 			if (res.equals(hashedPassword)) {
@@ -55,17 +55,16 @@ public class CommonService {
 				logger.logInvalidPassword(name);
 				return "redirect:login";
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			model.addAttribute("exception", e.getMessage());
-			return "exception";
-		}
 	}
 
 	public boolean isTheUserAuthorised(HttpServletRequest request) {
-		// here i wanna check if the user is authorised but not sure if
-		// it is correct
 		String status = (String) request.getSession().getAttribute("status");
 		return (status == "authorised");
+	}
+
+	public String handleException(Exception e, Model model) {
+		e.printStackTrace();
+		model.addAttribute("exception", e.getMessage());
+		return "exception";
 	}
 }

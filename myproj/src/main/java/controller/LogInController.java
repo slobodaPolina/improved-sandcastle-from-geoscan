@@ -17,16 +17,20 @@ public class LogInController {
 
 	@RequestMapping(value = "login", method = { RequestMethod.GET, RequestMethod.POST })
 	public String logIn(HttpServletRequest request, HttpServletResponse response, Model model) {
-		System.out.println("------ LOGIN CONTROLLER ------");
-		String userName, password, remember = "false";
-		if (commonService.hasParameter(request, "name") && commonService.hasParameter(request, "password")) {
-			userName = request.getParameter("name");
-			password = request.getParameter("password");
-			if (commonService.hasParameter(request, "remember"))
-				remember = "true";
-			return commonService.login(request, userName, password, remember, model);
+		try {
+			System.out.println("------ LOGIN CONTROLLER ------");
+			String userName, password, remember = "false";
+			if (commonService.hasParameter(request, "name") && commonService.hasParameter(request, "password")) {
+				userName = request.getParameter("name");
+				password = request.getParameter("password");
+				if (commonService.hasParameter(request, "remember"))
+					remember = "true";
+				return commonService.login(request, userName, password, remember, model);
+			}
+			return "index";
+		} catch (Exception e) {
+			return commonService.handleException(e, model);
 		}
-		return "index";
 	}
 
 }

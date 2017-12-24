@@ -32,7 +32,7 @@ img {
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="./">На главную</a>
+			<a class="navbar-brand" href="hello">На главную</a>
 		</div>
 
 		<div class="collapse navbar-collapse" id="navbar-collapse">

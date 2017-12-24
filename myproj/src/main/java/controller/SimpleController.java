@@ -14,10 +14,11 @@ public class SimpleController {
 	@Autowired
 	private CommonService commonService;
 
-	@RequestMapping(value = { "animals", "animation", "bootstrappage", "cats", "flexpage", "scripts",
+	@RequestMapping(value = { "animals", "animation", "bootstrappage", "cats", "flexpage", "hello", "scripts",
 			"sandbox" }, method = { RequestMethod.GET })
 	public String SimpleCont(HttpServletRequest request, Model model) {
 		try {
+			System.out.println("------ SIMPLE CONTROLLER ------");
 			if (commonService.isTheUserAuthorised(request)) {
 				System.out.println("Your session is ok");
 				return commonService.getRequestedPage(request);
@@ -26,8 +27,7 @@ public class SimpleController {
 				return "redirect:login";
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-			return "exception";
+			return commonService.handleException(e, model);
 		}
 	}
 
