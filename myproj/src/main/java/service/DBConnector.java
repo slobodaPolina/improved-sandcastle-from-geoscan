@@ -24,7 +24,17 @@ public class DBConnector {
 	}
 
 	@Transactional(readOnly = false)
-	public String findPassword(String name) {
+	public String getPassword(String name) {
 		return userDao.getPassword(name);
+	}
+
+	@Transactional(readOnly = false)
+	public int getCode(String name) {
+		return userDao.getCode(name);
+	}
+
+	@Transactional(readOnly = false)
+	public void setConfirmingStatus(String name) {
+		userDao.setConfirmingStatus(name);
 	}
 }

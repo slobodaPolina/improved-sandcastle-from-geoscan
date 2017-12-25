@@ -40,7 +40,7 @@ public class CommonService {
 	public String login(HttpServletRequest request, String name, String password, String remember, Model model)
 			throws NoSuchAlgorithmException {
 			String hashedPassword = ph.hash(password, "MD5");
-			String res = connector.findPassword(name);
+			String res = connector.getPassword(name);
 			if (res.equals(hashedPassword)) {
 				logger.logSuccessfulAuthorisation(name);
 				HttpSession session = request.getSession(true);

@@ -29,6 +29,22 @@ public class UserDao {
 		return user.getPassword();
 	}
 
+	public int getCode(String name) {
+		Session session = getSession();
+		session.beginTransaction();
+		User user = session.get(User.class, name);
+		session.getTransaction().commit();
+		return user.getCode();
+	}
+
+	public void setConfirmingStatus(String name) {
+		Session session = getSession();
+		session.beginTransaction();
+		User user = session.get(User.class, name);
+		session.getTransaction().commit();
+		user.setConfirmed(1);
+	}
+
 	public boolean exists(String name, String email) {
 		Session session = getSession();
 		session.beginTransaction();

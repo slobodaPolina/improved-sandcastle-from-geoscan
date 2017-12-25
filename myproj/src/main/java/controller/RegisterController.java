@@ -40,7 +40,8 @@ public class RegisterController {
 			if (!connector.exists(name, email)) {
 				if (!"".equals(password)) {
 					connector.insertUser(name, email, ph.hash(password, "MD5"));
-					// sender.send(email);
+					int code = connector.getCode(name);
+					//sender.send(email, name, code);
 					logger.logSuccessfulRegistration(name);
 					return commonService.login(request, name, password, remember, model);
 				}

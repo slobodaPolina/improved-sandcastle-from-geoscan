@@ -1,6 +1,7 @@
 package entity;
 
-import javax.persistence.Column;
+import java.util.Random;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -10,23 +11,27 @@ import javax.persistence.Table;
 public class User {
 
 	@Id
-	@Column(name = "login")
 	private String login;
-
 	private String email;
-
 	private String password;
+	private int code;
+	private int confirmed;
 
 	public User(String name, String email, String password) {
 		this.login = name;
 		this.email = email;
 		this.password = password;
+		Random r = new Random();
+		this.code = r.nextInt();
+		this.confirmed = 0;
 	}
 
-	public User() {//need this default constructor because it failed without
+	public User() {// need this default constructor because it failed without
 		this.login = "default";
 		this.email = "default";
 		this.password = "default";
+		this.code = 0;
+		this.confirmed = 0;
 	}
 
 	public String getLogin() {
@@ -53,4 +58,19 @@ public class User {
 		this.password = password;
 	}
 
+	public int getCode() {
+		return code;
+	}
+
+	public void setCode(int code) {
+		this.code = code;
+	}
+
+	public int getConfirmed() {
+		return confirmed;
+	}
+
+	public void setConfirmed(int confirmed) {
+		this.confirmed = confirmed;
+	}
 }
