@@ -1,10 +1,14 @@
 package dao;
 
+import java.util.concurrent.Callable;
+import java.util.function.Consumer;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import entity.User;
 
@@ -14,34 +18,39 @@ public class UserDao {
 	@Autowired
 	SessionFactory sessionFactory;
 
-	public void create(User user) {
+	private void proceedWithinTransaction(Consumer<Session> m) {
 		Session session = getSession();
 		session.beginTransaction();
-		session.save(user);
+		m.accept(session);
 		session.getTransaction().commit();
 	}
 
-	public String getPassword(String name) {
+	public void create(User user) {
+		// proceedWithinTransaction(new Consumer<Session>() {
+		// public void accept(Session session){
+		// session.save(user);
+		// }
+		// });
+		// proceedWithinTransaction((session) -> {session.save(user);});
+
+		proceedWithinTransaction((session) -> session.save(user));
+	}
+
+	public User getByName(String name) {
 		Session session = getSession();
 		session.beginTransaction();
 		User user = session.get(User.class, name);
 		session.getTransaction().commit();
-		return user.getPassword();
+		return user;
 	}
 
 	public int getCode(String name) {
-		Session session = getSession();
-		session.beginTransaction();
-		User user = session.get(User.class, name);
-		session.getTransaction().commit();
+		User user = getByName(name);
 		return user.getCode();
 	}
 
 	public void setConfirmingStatus(String name) {
-		Session session = getSession();
-		session.beginTransaction();
-		User user = session.get(User.class, name);
-		session.getTransaction().commit();
+		User user = getByName(name);
 		user.setConfirmed(1);
 	}
 

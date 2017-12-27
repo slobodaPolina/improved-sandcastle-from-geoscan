@@ -1,5 +1,7 @@
 package controller;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,10 +19,10 @@ public class IndexController {
 	private CommonService commonService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String index(Model model, HttpServletRequest request, HttpServletResponse response) {
+	public String index(Model model, HttpServletRequest request, HttpServletResponse response, Principal principal) {
 		try {
 			System.out.println("------ INDEX CONTROLLER ------");
-			if (commonService.isTheUserAuthorised(request)) {
+			if (principal != null) {
 				return "hello";
 			}
 			return "redirect:login";

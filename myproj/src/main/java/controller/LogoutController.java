@@ -25,7 +25,6 @@ public class LogoutController {
 		System.out.println("------ LOGOUT CONTROLLER ------");
 		try {
 			HttpSession session = request.getSession();
-			session.setAttribute("status", "logged out");
 			logger.logLogout((String) session.getAttribute("name"));
 			return "redirect:login";
 		} catch (Exception e) {

@@ -21,12 +21,12 @@
 			<form action="login" method="post">
 				<p>Log in, please</p>
 				<p>
-					Name: <input type="text" name="name" autofocus />
+					Name: <input type="text" name="username" autofocus />
 				</p>
 				<p>
 					Password: <input type="password" name="password">
 				</p>
-				<label><input type="checkbox" name="remember" value="true"
+				<label><input type="checkbox" name="remember-me" value="true"
 					checked> Remember me!</label>
 				<p>
 					<input type="submit" value="Log In" class="submit-button" />

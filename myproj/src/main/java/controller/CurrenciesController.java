@@ -1,5 +1,6 @@
 package controller;
 
+import java.security.Principal;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,9 +23,9 @@ public class CurrenciesController {
 
 	@RequestMapping(value = "currencies", method = RequestMethod.GET)
 
-	public String Currencies(HttpServletRequest request, Model model) {
+	public String Currencies(HttpServletRequest request, Model model, Principal principal) {
 		try {
-			if (commonService.isTheUserAuthorised(request)) {
+			if (principal != null) {
 				ArrayList<Currency> list = browser.getCbrInfo();
 				model.addAttribute("list", list);
 				System.out.println("Your session is ok");

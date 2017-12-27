@@ -7,11 +7,11 @@ import java.security.NoSuchAlgorithmException;
 import org.springframework.stereotype.Service;
 @Service
 public class PasswordHasher {
-	private MessageDigest m;
-	private byte digest[];
-	private BigInteger bigint;
+	private static MessageDigest m;
+	private static byte digest[];
+	private static BigInteger bigint;
 
-	public String hash(String password, String algorythm) throws NoSuchAlgorithmException {
+	public static String hash(String password, String algorythm) throws NoSuchAlgorithmException {
 		m = MessageDigest.getInstance(algorythm);
 		m.reset();
 		m.update(password.getBytes());

@@ -10,10 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import dao.UserDao;
+import entity.User;
+
 @Service
 public class CommonService {
 	@Autowired
-	DBConnector connector;
+	UserDao userDao;
 	@Autowired
 	PasswordHasher ph;
 	@Autowired
@@ -40,12 +43,15 @@ public class CommonService {
 	public String login(HttpServletRequest request, String name, String password, String remember, Model model)
 			throws NoSuchAlgorithmException {
 			String hashedPassword = ph.hash(password, "MD5");
-			String res = connector.getPassword(name);
+			User user = userDao.getByName(name);
+			if (user == null) {
+				return "redirect:login";
+			}
+			String res = user.getPassword();
 			if (res.equals(hashedPassword)) {
 				logger.logSuccessfulAuthorisation(name);
 				HttpSession session = request.getSession(true);
 				session.setAttribute("name", name);
-				session.setAttribute("status", "authorised");
 				if ("true".equals(remember))
 					request.getSession().setMaxInactiveInterval(Integer.MAX_VALUE);
 				else
@@ -63,7 +69,7 @@ public class CommonService {
 	}
 
 	public String handleException(Exception e, Model model) {
-		e.printStackTrace();
+		logger.error("internal error occured", e);
 		model.addAttribute("exception", e.getMessage());
 		return "exception";
 	}

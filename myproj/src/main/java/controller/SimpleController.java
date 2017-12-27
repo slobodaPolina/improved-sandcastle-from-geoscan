@@ -1,5 +1,7 @@
 package controller;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,10 +18,10 @@ public class SimpleController {
 
 	@RequestMapping(value = { "animals", "animation", "bootstrappage", "cats", "flexpage", "hello", "scripts",
 			"sandbox" }, method = { RequestMethod.GET })
-	public String SimpleCont(HttpServletRequest request, Model model) {
+	public String SimpleCont(HttpServletRequest request, Model model, Principal principal) {
 		try {
 			System.out.println("------ SIMPLE CONTROLLER ------");
-			if (commonService.isTheUserAuthorised(request)) {
+			if (principal != null) {
 				System.out.println("Your session is ok");
 				return commonService.getRequestedPage(request);
 			} else {

@@ -15,11 +15,12 @@ public class LogInController {
 	@Autowired
 	private CommonService commonService;
 
-	@RequestMapping(value = "login", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "login", method = { RequestMethod.GET })
 	public String logIn(HttpServletRequest request, HttpServletResponse response, Model model) {
 		try {
 			System.out.println("------ LOGIN CONTROLLER ------");
 			String userName, password, remember = "false";
+			// TODO check if here are params?
 			if (commonService.hasParameter(request, "name") && commonService.hasParameter(request, "password")) {
 				userName = request.getParameter("name");
 				password = request.getParameter("password");

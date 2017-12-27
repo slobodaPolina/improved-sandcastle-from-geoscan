@@ -41,6 +41,7 @@ public class RegisterController {
 				if (!"".equals(password)) {
 					connector.insertUser(name, email, ph.hash(password, "MD5"));
 					int code = connector.getCode(name);
+					//TODO test it here
 					//sender.send(email, name, code);
 					logger.logSuccessfulRegistration(name);
 					return commonService.login(request, name, password, remember, model);

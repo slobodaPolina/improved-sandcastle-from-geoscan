@@ -7,12 +7,12 @@ import dao.UserDao;
 import entity.User;
 
 @Service
+@Transactional(readOnly = true)
 public class DBConnector {
 
 	@Autowired
 	private UserDao userDao;
 
-	@Transactional(readOnly = false)
 	public boolean exists(String name, String email) {
 		return userDao.exists(name, email);
 	}
@@ -23,12 +23,6 @@ public class DBConnector {
 		userDao.create(user);
 	}
 
-	@Transactional(readOnly = false)
-	public String getPassword(String name) {
-		return userDao.getPassword(name);
-	}
-
-	@Transactional(readOnly = false)
 	public int getCode(String name) {
 		return userDao.getCode(name);
 	}
