@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import dao.UserDao;
 import service.CommonService;
-import service.DBConnector;
 import service.EmailSender;
 import service.MyLogger;
 import service.PasswordHasher;
@@ -20,9 +20,7 @@ public class RegisterController {
 	@Autowired
 	EmailSender sender;
 	@Autowired
-	private DBConnector connector;
-	@Autowired
-	private PasswordHasher ph;
+	private UserDao userDao;
 	@Autowired
 	private CommonService commonService;
 	@Autowired
@@ -37,12 +35,11 @@ public class RegisterController {
 			if (commonService.hasParameter(request, "remember"))
 				remember = "true";
 
-			if (!connector.exists(name, email)) {
+			if (!userDao.exists(name, email)) {
 				if (!"".equals(password)) {
-					connector.insertUser(name, email, ph.hash(password, "MD5"));
-					int code = connector.getCode(name);
-					//TODO test it here
-					//sender.send(email, name, code);
+					userDao.create(name, email, PasswordHasher.hash(password, "MD5"));
+					int code = userDao.getCode(name);
+					sender.send(email, name, code);
 					logger.logSuccessfulRegistration(name);
 					return commonService.login(request, name, password, remember, model);
 				}

@@ -5,6 +5,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import org.springframework.stereotype.Service;
+
 @Service
 public class PasswordHasher {
 	private static MessageDigest m;

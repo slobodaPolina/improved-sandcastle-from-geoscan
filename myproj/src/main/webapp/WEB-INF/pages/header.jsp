@@ -14,8 +14,7 @@
 			<li><a href="animation"> Летающие бублики</a></li>
 			<li><a href="currencies"> Список валют</a></li>
 			<li><form action="logout" method="post">
-					<input type="hidden" name="exit" value="true"> <input
-						type="submit" value="Log out" class="submit-button"
+					<input type="submit" value="Log out" class="submit-button"
 						style="border: 0" />
 				</form></li>
 		</ul>

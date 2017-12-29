@@ -42,30 +42,26 @@ public class CommonService {
 
 	public String login(HttpServletRequest request, String name, String password, String remember, Model model)
 			throws NoSuchAlgorithmException {
-			String hashedPassword = ph.hash(password, "MD5");
-			User user = userDao.getByName(name);
-			if (user == null) {
-				return "redirect:login";
-			}
-			String res = user.getPassword();
-			if (res.equals(hashedPassword)) {
-				logger.logSuccessfulAuthorisation(name);
-				HttpSession session = request.getSession(true);
-				session.setAttribute("name", name);
-				if ("true".equals(remember))
-					request.getSession().setMaxInactiveInterval(Integer.MAX_VALUE);
-				else
-					request.getSession().setMaxInactiveInterval(5);// 1800
-				return "redirect:/";
-			} else {
-				logger.logInvalidPassword(name);
-				return "redirect:login";
-			}
-	}
-
-	public boolean isTheUserAuthorised(HttpServletRequest request) {
-		String status = (String) request.getSession().getAttribute("status");
-		return (status == "authorised");
+		// TODO: it this piece of code useful?
+		String hashedPassword = PasswordHasher.hash(password, "MD5");
+		User user = userDao.getByName(name);
+		if (user == null) {
+			return "redirect:login";
+		}
+		String res = user.getPassword();
+		if (res.equals(hashedPassword)) {
+			logger.logSuccessfulAuthorisation(name);
+			HttpSession session = request.getSession(true);
+			session.setAttribute("name", name);
+			if ("true".equals(remember))
+				request.getSession().setMaxInactiveInterval(Integer.MAX_VALUE);
+			else
+				request.getSession().setMaxInactiveInterval(1800);
+			return "redirect:/";
+		} else {
+			logger.logInvalidPassword(name);
+			return "redirect:login";
+		}
 	}
 
 	public String handleException(Exception e, Model model) {

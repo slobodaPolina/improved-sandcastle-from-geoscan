@@ -1,6 +1,5 @@
 package dao;
 
-import java.util.concurrent.Callable;
 import java.util.function.Consumer;
 
 import org.hibernate.Session;
@@ -8,11 +7,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.transaction.annotation.Transactional;
 import entity.User;
 
 @Repository
+@Transactional(readOnly = true)
 public class UserDao {
 
 	@Autowired
@@ -25,15 +24,15 @@ public class UserDao {
 		session.getTransaction().commit();
 	}
 
-	public void create(User user) {
+	@Transactional(readOnly = false)
+	public void create(String name, String email, String password) {
+		User user = new User(name, email, password);
+		proceedWithinTransaction((session) -> session.save(user));
 		// proceedWithinTransaction(new Consumer<Session>() {
 		// public void accept(Session session){
 		// session.save(user);
 		// }
 		// });
-		// proceedWithinTransaction((session) -> {session.save(user);});
-
-		proceedWithinTransaction((session) -> session.save(user));
 	}
 
 	public User getByName(String name) {
@@ -49,6 +48,7 @@ public class UserDao {
 		return user.getCode();
 	}
 
+	@Transactional(readOnly = false)
 	public void setConfirmingStatus(String name) {
 		User user = getByName(name);
 		user.setConfirmed(1);
