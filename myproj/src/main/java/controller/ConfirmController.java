@@ -25,9 +25,12 @@ public class ConfirmController {
 		try {
 			System.out.println("------ CONFIRM CONTROLLER ------");
 			if (code == userDao.getCode(name)) {
-				model.addAttribute("text",
-						"Hello, " + name + "! Thanks for confirming your email. You can now log in.");
-				userDao.setConfirmingStatus(name);
+				if (userDao.getByName(name).getConfirmed() == 0) {
+					userDao.setConfirmingStatus(name);
+					model.addAttribute("text", "Hello, " + name + "! Thanks for confirming your email!");
+				} else {
+					model.addAttribute("text", "Hello, " + name + "! You seem to have already confirmed your email!");
+				}
 			} else {
 				model.addAttribute("text", "Hello, " + name
 						+ "! I am sorry to tell you your confirming is not successfull, probably your confirming code is incorrect.");

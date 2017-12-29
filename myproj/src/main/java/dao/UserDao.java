@@ -52,6 +52,7 @@ public class UserDao {
 	public void setConfirmingStatus(String name) {
 		User user = getByName(name);
 		user.setConfirmed(1);
+		proceedWithinTransaction((session) -> session.update(user));
 	}
 
 	public boolean exists(String name, String email) {

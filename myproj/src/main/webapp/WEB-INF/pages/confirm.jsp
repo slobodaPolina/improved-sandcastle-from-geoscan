@@ -35,7 +35,8 @@
 		</div>
 	</div>
 	<div class="log_button" id="LogInButton">Log In</div>
-	"${text}"
+	<div class="clearright"></div>
+	<p style="text-align: center">${text}</p>
 	<script type="text/javascript" src="resources/VisibilityOfWindows.js">
 		
 	</script>
