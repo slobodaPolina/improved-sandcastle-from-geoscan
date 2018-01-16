@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import dao.UserDao;
-import entity.User;
 
 @Service
 public class CommonService {
@@ -40,28 +39,16 @@ public class CommonService {
 		return false;
 	}
 
-	public String login(HttpServletRequest request, String name, String password, String remember, Model model)
-			throws NoSuchAlgorithmException {
-		// TODO: it this piece of code useful?
-		String hashedPassword = PasswordHasher.hash(password, "MD5");
-		User user = userDao.getByName(name);
-		if (user == null) {
-			return "redirect:login";
-		}
-		String res = user.getPassword();
-		if (res.equals(hashedPassword)) {
-			logger.logSuccessfulAuthorisation(name);
-			HttpSession session = request.getSession(true);
-			session.setAttribute("name", name);
-			if ("true".equals(remember))
-				request.getSession().setMaxInactiveInterval(Integer.MAX_VALUE);
-			else
-				request.getSession().setMaxInactiveInterval(1800);
-			return "redirect:/";
-		} else {
-			logger.logInvalidPassword(name);
-			return "redirect:login";
-		}
+	public void successfulLogin(HttpServletRequest request, String name, String remember) throws NoSuchAlgorithmException {
+		//i want this piece of code to be called if the authorisation is successful
+		//TODO how to add it to spring security?
+		logger.logSuccessfulAuthorisation(name);
+		HttpSession session = request.getSession(true);
+		session.setAttribute("name", name);
+		if ("true".equals(remember))
+			request.getSession().setMaxInactiveInterval(Integer.MAX_VALUE);
+		else
+			request.getSession().setMaxInactiveInterval(1800);
 	}
 
 	public String handleException(Exception e, Model model) {

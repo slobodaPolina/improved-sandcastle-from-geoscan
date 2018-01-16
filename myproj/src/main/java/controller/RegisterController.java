@@ -31,17 +31,14 @@ public class RegisterController {
 			HttpServletRequest request, HttpServletResponse response, Model model) {
 		System.out.println("------ REGISTER CONTROLLER ------");
 		try {
-			String remember = "false";
-			if (commonService.hasParameter(request, "remember"))
-				remember = "true";
-
 			if (!userDao.exists(name, email)) {
 				if (!"".equals(password)) {
 					userDao.create(name, email, PasswordHasher.hash(password, "MD5"));
 					int code = userDao.getCode(name);
 					sender.send(email, name, code);
 					logger.logSuccessfulRegistration(name);
-					return commonService.login(request, name, password, remember, model);
+					model.addAttribute("address", email);
+					return "registrationinfo";
 				}
 				logger.logNoPassword(name);
 				return "redirect:login";

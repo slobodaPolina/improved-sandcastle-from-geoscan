@@ -55,6 +55,13 @@ public class UserDao {
 		proceedWithinTransaction((session) -> session.update(user));
 	}
 
+	@Transactional(readOnly = false)
+	public void setNewPassword(String name, String hashedPassword) {
+		User user = getByName(name);
+		user.setPassword(hashedPassword);
+		proceedWithinTransaction((session) -> session.update(user));
+	}
+
 	public boolean exists(String name, String email) {
 		Session session = getSession();
 		session.beginTransaction();

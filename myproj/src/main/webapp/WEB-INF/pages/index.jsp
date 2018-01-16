@@ -26,8 +26,8 @@
 				<p>
 					Password: <input type="password" name="password">
 				</p>
-				<label><input type="checkbox" name="remember-me" value="true"
-					checked> Remember me!</label>
+				<label><input type="checkbox" name="remember-me"
+					value="true" checked> Remember me!</label>
 				<p>
 					<input type="submit" value="Log In" class="submit-button" />
 				</p>
@@ -53,8 +53,6 @@
 				<input type="password" id="pass2" name="password2"
 					onkeyup="CheckRegInfo()">
 				<p id="RegErrors">Type all the info and log in:)</p>
-				<label><input type="checkbox" name="remember" value="true"
-					checked> Remember me!</label>
 				<p>
 					<input type="submit" id="RegisterButton" value="Register"
 						class="submit-button" disabled />
