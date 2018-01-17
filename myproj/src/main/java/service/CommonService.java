@@ -39,16 +39,10 @@ public class CommonService {
 		return false;
 	}
 
-	public void successfulLogin(HttpServletRequest request, String name, String remember) throws NoSuchAlgorithmException {
-		//i want this piece of code to be called if the authorisation is successful
-		//TODO how to add it to spring security?
+	public void successfulLogin(HttpServletRequest request, String name) throws NoSuchAlgorithmException {
 		logger.logSuccessfulAuthorisation(name);
 		HttpSession session = request.getSession(true);
 		session.setAttribute("name", name);
-		if ("true".equals(remember))
-			request.getSession().setMaxInactiveInterval(Integer.MAX_VALUE);
-		else
-			request.getSession().setMaxInactiveInterval(1800);
 	}
 
 	public String handleException(Exception e, Model model) {

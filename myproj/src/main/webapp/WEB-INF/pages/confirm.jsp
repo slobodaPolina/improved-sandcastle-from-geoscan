@@ -8,6 +8,7 @@
 	rel="stylesheet" />
 
 <link href="<c:url value="/resources/styles.css" />" rel="stylesheet" />
+<link rel="shortcut icon" type="image/gif" href="images/icon.gif" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript" src="resources/CheckingRegInfo.js"></script>
@@ -15,31 +16,10 @@
 <title>confirm</title>
 </head>
 <body>
-	<div id="ENTER">
-		<div class="form_window">
-			<img src="images/close.png">
-			<form action="login" method="post">
-				<p>Log in, please</p>
-				<p>
-					Name: <input type="text" name="name" autofocus />
-				</p>
-				<p>
-					Password: <input type="password" name="password">
-				</p>
-				<label><input type="checkbox" name="remember" value="true"
-					checked> Remember me!</label>
-				<p>
-					<input type="submit" value="Log In" class="submit-button" />
-				</p>
-			</form>
-		</div>
+	<div class="content-text">
+		<p>${text}</p>
+		<a href="hello"><button class="submit-button">Log In</button></a>
+		<div class="clearleft"></div>
 	</div>
-	<div class="log_button" id="LogInButton">Log In</div>
-	<div class="clearright"></div>
-	<p style="text-align: center">${text}</p>
-	<script type="text/javascript" src="resources/VisibilityOfWindows.js">
-		
-	</script>
-
 </body>
 </html>

@@ -9,10 +9,11 @@
 <body>
 	<div class="header">
 		<ul class="menu">
-			<li><a href="hello"> Главная</a></li>
-			<li><a href="scripts"> Тест</a></li>
-			<li><a href="animation"> Летающие бублики</a></li>
-			<li><a href="currencies"> Список валют</a></li>
+			<li><a href="hello">Главная</a></li>
+			<li><a href="messages">Сообщения</a></li>
+			<li><a href="scripts">Тест</a></li>
+			<li><a href="animation">Летающие бублики</a></li>
+			<li><a href="currencies">Список валют</a></li>
 			<li><form action="logout" method="post">
 					<input type="submit" value="Log out" class="submit-button"
 						style="border: 0" />

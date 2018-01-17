@@ -31,6 +31,7 @@ public class PassChangeController {
 				if (PasswordHasher.hash(oldPassword, "MD5").equals(userDao.getByName(name).getPassword())) {
 					userDao.setNewPassword(name, PasswordHasher.hash(newPassword, "MD5"));
 					System.out.println("Your password has been changed");
+					return "settings";
 				} else {
 					System.out.println("You have inputted incorrect password");
 				}

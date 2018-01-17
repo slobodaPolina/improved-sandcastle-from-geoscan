@@ -20,13 +20,25 @@
 						autofocus />
 				</p>
 				<p>
-					Введите новый пароль:<input type="text" name="newPassword" />
+					Введите новый пароль: <input type="text" name="newPassword" />
 				</p>
 				<p>
 					<input type="submit" value="Изменить" class="submit-button" />
 				</p>
 			</form>
+			<br />
+			<p>Загрузить фотографию:</p>
+			<form action="addphoto" method="post">
+				<p>
+					<input type="file" name="photo" />
+				</p>
+				<p>
+					<input type="submit" value="Загрузить" class="submit-button" />
+				</p>
+			</form>
 		</div>
-		<%@ include file="footer.jsp"%>
+	</div>
+	<%@ include file="footer.jsp"%>
+
 </body>
 </html>

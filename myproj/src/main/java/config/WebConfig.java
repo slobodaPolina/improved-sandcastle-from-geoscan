@@ -10,6 +10,8 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -19,7 +21,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages= {"controller"})
+@ComponentScan(basePackages = { "controller" })
 @EnableTransactionManagement
 public class WebConfig implements WebMvcConfigurer {
 
@@ -33,12 +35,17 @@ public class WebConfig implements WebMvcConfigurer {
 	}
 
 	@Bean
+	public MultipartResolver multipartResolver() {
+		return new StandardServletMultipartResolver();
+	}
+
+	@Bean
 	public SessionFactory sessionFactory() {
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 		dataSource.setUsername("root");
 		dataSource.setPassword("1234");
-		dataSource.setUrl("jdbc:mysql://localhost/world?serverTimezone=Europe/Moscow");
+		dataSource.setUrl("jdbc:mysql://localhost/myprojectdb?serverTimezone=Europe/Moscow");
 
 		LocalSessionFactoryBuilder configuration = new LocalSessionFactoryBuilder(dataSource);
 		configuration.scanPackages("entity");

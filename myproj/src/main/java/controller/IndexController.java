@@ -1,7 +1,6 @@
 package controller;
 
 import java.security.Principal;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,6 +22,8 @@ public class IndexController {
 		try {
 			System.out.println("------ INDEX CONTROLLER ------");
 			if (principal != null) {
+				String name = principal.getName();
+				commonService.successfulLogin(request, name);
 				return "hello";
 			}
 			return "redirect:login";
