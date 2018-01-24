@@ -1,20 +1,17 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link th:href="@{/resources/styles.css}" rel="stylesheet" />
+<link th:href="@{/images/icon.gif}" rel="shortcut icon" />
 <title>Scripts</title>
-<link href="<c:url value="/resources/styles.css" />" rel="stylesheet" />
-<link rel="shortcut icon" type="image/gif" href="images/icon.gif" />
 </head>
 <body>
-	<%@ include file="header.jsp"%>
+	<div th:replace="header :: header">INCLUDING HEADER HERE</div>
 	<aside>
-	<div class="seealso">
-		<img src="images/truefalse.png" /> Проверь свою эрудицию!
-	</div>
+		<div class="seealso">
+			<img src="images/truefalse.png" /> Проверь свою эрудицию!
+		</div>
 	</aside>
 	<div class="content-text">
 		<div class="buttons">
@@ -70,6 +67,6 @@
 		</form>
 		<script type="text/javascript" src="resources/Scr-test.js"></script>
 	</div>
-	<%@ include file="footer.jsp"%>
+	<div th:replace="footer :: footer">INCLUDING FOOTER</div>
 </body>
 </html>

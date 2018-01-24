@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link th:href="@{/resources/Bootstrap.css}" rel="stylesheet" />
+<link th:href="@{/resources/styles.css}" rel="stylesheet" />
+<link th:href="@{/images/icon.gif}" rel="shortcut icon" />
+<title>currencies</title>
+</head>
+<body>
+	<div id="page">
+		<div th:replace="header :: header">INCLUDING HEADER HERE</div>
+		<!-- stringBuilder for string changing: when u use string it creates new one for each modification,
+	 but strbuilder doesnt. StringBuffer for multithread (it is slow and safe) -->
+		<div class="content-text">
+			<table class='table table-striped table-sm table-bordered'>
+				<thead>
+					<tr>
+						<th>Russian Name</th>
+						<th>English Name</th>
+						<th>Char Code</th>
+						<th>Num Code</th>
+					</tr>
+				</thead>
+				<tr th:each="i : ${list}">
+					<td>[[${i.rusName}]]</td>
+					<td>[[${i.engName}]]</td>
+					<td>[[${i.charCode}]]</td>
+					<td>[[${i.numCode}]]</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div th:replace="footer :: footer">INCLUDING FOOTER</div>
+</body>
+</html>

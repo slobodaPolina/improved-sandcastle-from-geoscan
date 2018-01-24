@@ -1,17 +1,14 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link th:href="@{/resources/styles.css}" rel="stylesheet" />
+<link th:href="@{/resources/Flex.css}" rel="stylesheet" />
+<link th:href="@{/images/icon.gif}" rel="shortcut icon" />
 <title>FlexPage</title>
-<link href="<c:url value="/resources/styles.css" />" rel="stylesheet" />
-<link href="<c:url value="/resources/Flex.css" />" rel="stylesheet" />
-<link rel="shortcut icon" type="image/gif" href="images/icon.gif" />
 </head>
 <body>
-	<%@ include file="header.jsp"%>
+	<div th:replace="header :: header">INCLUDING HEADER HERE</div>
 	<div class="FlexBlock">
 		<div class="FlexBlock content-text">
 			<img src="images/paws.gif" id="paws" />
@@ -145,6 +142,6 @@
 		</div>
 		<img src="images/infinity.jpg" id="infinity" />
 	</div>
-	<%@ include file="footer.jsp"%>
+	<div th:replace="footer :: footer">INCLUDING FOOTER</div>
 </body>
 </html>

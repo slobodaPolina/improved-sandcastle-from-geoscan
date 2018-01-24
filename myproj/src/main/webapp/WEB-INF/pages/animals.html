@@ -1,32 +1,31 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link th:href="@{/resources/styles.css}" rel="stylesheet" />
+<link th:href="@{/images/icon.gif}" rel="shortcut icon" />
 <title>О животных</title>
-<link href="<c:url value="/resources/styles.css" />" rel="stylesheet" />
-<link rel="shortcut icon" type="image/gif" href="images/icon.gif" />
 </head>
 <body>
+	<div th:replace="header :: header">INCLUDING HEADER HERE</div>
 	<div id="page">
-	<%@ include file="header.jsp"%>
 		<aside>
-		<div class="seealso">
-			<p>Интересно подробнее? Читай первоисточник!</p>
-			<a href="https://ru.wikipedia.org/wiki/Животные" target="_blank">Животные</a>
-			<a href="https://ru.wikipedia.org/wiki/Первичноротые" target="_blank">Первичноротые</a>
-			<a href="https://ru.wikipedia.org/wiki/Вторичноротые" target="_blank">Вторичноротые</a>
-			<a href="https://ru.wikipedia.org/wiki/Спиральные" target="_blank">Спиральные</a>
-			<a href="https://ru.wikipedia.org/wiki/Platyzoa" target="_blank">Platyzoa</a>
-			<a href="https://ru.wikipedia.org/wiki/Panarthropoda" target="_blank">Panarthropoda</a>
-		</div>
-		<div class="seealso">
-			<img src="images/douknow.jpg" />Колония кораллов Savalia savaglia,
-			чей возраст составляет 2700 лет, - одно из самых долгоживущих
-			животных.
-		</div>
+			<div class="seealso">
+				<p>Интересно подробнее? Читай первоисточник!</p>
+				<a href="https://ru.wikipedia.org/wiki/Животные" target="_blank">Животные</a>
+				<a href="https://ru.wikipedia.org/wiki/Первичноротые"
+					target="_blank">Первичноротые</a> <a
+					href="https://ru.wikipedia.org/wiki/Вторичноротые" target="_blank">Вторичноротые</a>
+				<a href="https://ru.wikipedia.org/wiki/Спиральные" target="_blank">Спиральные</a>
+				<a href="https://ru.wikipedia.org/wiki/Platyzoa" target="_blank">Platyzoa</a>
+				<a href="https://ru.wikipedia.org/wiki/Panarthropoda"
+					target="_blank">Panarthropoda</a>
+			</div>
+			<div class="seealso">
+				<img src="images/douknow.jpg" />Колония кораллов Savalia savaglia,
+				чей возраст составляет 2700 лет, - одно из самых долгоживущих
+				животных.
+			</div>
 		</aside>
 		<div class="content-text">
 			<h1>Немного о мире животных</h1>
@@ -103,7 +102,6 @@
 				всеядных и паразитов.</p>
 		</div>
 	</div>
-	<%@ include file="footer.jsp"%>
-
+	<div th:replace="footer :: footer">INCLUDING FOOTER</div>
 </body>
 </html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link th:href="@{/resources/styles.css}" rel="stylesheet" />
+<link th:href="@{/resources/styles_for_login.css}" rel="stylesheet" />
+<link th:href="@{/images/icon.gif}" rel="shortcut icon" />
+<script type="text/javascript" th:src="@{/resources/CheckingRegInfo.js}"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<title>confirm</title>
+</head>
+<body>
+	<div class="content-text">
+		<p>[[${text}]]</p>
+		<a href="hello"><button class="submit-button">Log In</button></a>
+		<div class="clearleft"></div>
+	</div>
+</body>
+</html>

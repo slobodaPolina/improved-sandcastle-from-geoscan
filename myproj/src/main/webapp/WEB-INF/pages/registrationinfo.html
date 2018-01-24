@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link th:href="@{/resources/styles.css}" rel="stylesheet" />
+<link th:href="@{/images/icon.gif}" rel="shortcut icon" />
+<title>Info</title>
+</head>
+<body>
+	<div class="content-text">
+		<p>Hello, thanks for your registration! I have sent you an email
+			on [[${address}]] address. Please visit it and confirm your registration.
+			You will be able to recreate your password using the email in the
+			future.</p>
+		<p>You can tap the button below to login now.</p>
+		<a href="hello"><button class="submit-button">Log In</button></a>
+		<div class="clearleft"></div>
+	</div>
+</body>
+</html>

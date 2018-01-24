@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link th:href="@{/resources/styles.css}" rel="stylesheet" />
+<link th:href="@{/images/icon.gif}" rel="shortcut icon" />
+<title>Добавить сообщение</title>
+</head>
+<body>
+	<div th:replace="header :: header">INCLUDING HEADER HERE</div>
+	<div id="page">
+		<div class="content-text">
+			<form action="newmessage" method="post">
+				<p>
+					<textarea cols="40" rows="5" name="message"
+						placeholder="Напишите сюда свое сообщение"></textarea>
+				</p>
+				<p>
+					<input type="submit" value="Добавить!" class="submit-button" />
+				</p>
+			</form>
+		</div>
+	</div>
+	<div th:replace="footer :: footer">INCLUDING FOOTER</div>
+</body>
+</html>
