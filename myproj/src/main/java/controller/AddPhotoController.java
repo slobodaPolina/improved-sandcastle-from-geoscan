@@ -2,7 +2,6 @@ package controller;
 
 import java.io.File;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,8 +27,12 @@ public class AddPhotoController {
 			HttpServletResponse response, Model model) {
 		System.out.println("------ ADD PHOTO CONTROLLER ------");
 		try {
-			if ("jpg".equals(photo.getContentType())) {
-				photo.transferTo(new File(request.getSession().getAttribute("name") + ".jpg"));
+			if ("image/jpeg".equals(photo.getContentType())) {
+				String filePath = request.getServletContext().getRealPath("/") + "uploads\\";
+				photo.transferTo(new File(filePath + request.getSession().getAttribute("name") + ".jpg"));
+				System.out.println("It is ok, the file was successfully uploaded!");
+			} else {
+				System.out.println("I do not support such file types, please choose another file");
 			}
 			return "redirect:settings";
 		} catch (Exception e) {

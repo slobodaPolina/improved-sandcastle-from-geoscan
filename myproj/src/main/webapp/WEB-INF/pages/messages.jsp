@@ -13,8 +13,8 @@
 	<div id="page">
 		<%@ include file="header.jsp"%>
 		<div class="content-text">
-			<a href="addmessage"><button class="submit-button">Добавить
-					сообщение</button></a>
+			<a href="addmessage"><button class="submit-button"
+					style="float: right">Добавить сообщение</button></a>
 			<div class="clearleft"></div>
 			Ранее добавленные пользователями сообщения:
 			<ul id="pages_list">

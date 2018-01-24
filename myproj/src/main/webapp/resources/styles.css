@@ -52,16 +52,18 @@ h2 {
 
 .buttons {
 	margin: auto;
+	height: 70px;
 }
 
 button {
 	border-radius: 20px;
-	width: 100px;
+	padding: 10px; width : 100px;
 	color: blue;
 	float: left;
 	background-color: white;
 	border-color: blue;
 	margin: 10px 30px;
+	width: 100px;
 }
 
 button:focus {

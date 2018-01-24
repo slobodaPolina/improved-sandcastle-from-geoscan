@@ -28,7 +28,7 @@
 			</form>
 			<br />
 			<p>Загрузить фотографию:</p>
-			<form action="addphoto" method="post">
+			<form action="addphoto" enctype="multipart/form-data" method="post">
 				<p>
 					<input type="file" name="photo" />
 				</p>
