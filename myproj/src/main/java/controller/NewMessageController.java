@@ -20,15 +20,16 @@ public class NewMessageController {
 	@Autowired
 	private MessageDao messageDao;
 
-	@RequestMapping(value = "newmessage", method = RequestMethod.GET)
+	@RequestMapping(value = "newmessage", method = RequestMethod.POST)
 	public String confirm(Model model, @RequestParam String message, HttpServletResponse response,
 			HttpServletRequest request) {
 		try {
 			System.out.println("------ NEW MESSAGE CONTROLLER ------");
 			// TODO: now there is no possibility to send the message to somebody certain, it
 			// is like the post, but i would like to add it
-			response.setContentType("text/html; charset=UTF-8");
-			request.setCharacterEncoding("UTF-8");
+			
+			// here was real problem with encodings of russian letters, i fixed it with whis
+			message = new String(message.getBytes("ISO-8859-1"), "UTF8");
 			if (!"".equals(message))
 				messageDao.create((String) request.getSession().getAttribute("name"), message);
 			return "redirect:messages";
