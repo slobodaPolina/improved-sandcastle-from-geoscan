@@ -28,9 +28,11 @@ public class AddPhotoController {
 		System.out.println("------ ADD PHOTO CONTROLLER ------");
 		try {
 			if ("image/jpeg".equals(photo.getContentType())) {
-				String filePath = request.getServletContext().getRealPath("/") + "uploads\\";
-				photo.transferTo(new File(filePath + request.getSession().getAttribute("name") + ".jpg"));
-				System.out.println("It is ok, the file was successfully uploaded!");
+				String filePath = "C:\\Users\\Полина\\git\\myproj\\src\\main\\webapp\\uploads\\";
+				File f = (new File(filePath + request.getSession().getAttribute("name") + ".jpg"));
+				photo.transferTo(f);
+				System.out.println("It is ok, the file was successfully uploaded to");
+				System.out.println(filePath + request.getSession().getAttribute("name") + ".jpg");
 			} else {
 				System.out.println("I do not support such file types, please choose another file");
 			}

@@ -31,11 +31,11 @@ h2 {
 
 .header {
 	font-style: italic;
-	font-size: 1.3em;
 	position: fixed;
 	top: 0;
-	width: 100%;
 	z-index: 500;
+	width: 100%;
+	background: url(/MyProject/images/footer.jpg) repeat-x center;
 }
 
 #timer {
@@ -46,7 +46,7 @@ h2 {
 	border-radius: 20px;
 	margin: auto;
 	float: left;
-	margin: 10px 30px;
+	margin: 0px 30px;
 	display: none;
 }
 
@@ -57,7 +57,8 @@ h2 {
 
 button {
 	border-radius: 20px;
-	padding: 10px; width : 100px;
+	padding: 10px;
+	width: 100px;
 	color: blue;
 	float: left;
 	background-color: white;
@@ -79,21 +80,16 @@ button:focus {
 .menu {
 	padding: 10px;
 	list-style-type: none;
-	text-align: center;
 	margin-top: 0;
 }
 
 .menu a, .menu form {
 	display: inline-block;
-	width: 13%;
 	margin: 5px;
 	text-decoration: none;
-	border: 2px solid #0000cc;
-	border-radius: 10px;
 	padding: 10px;
 	font-family: 'Underdog', cursive;
-	color: #0000cc;
-	background: white;
+	color: white;
 }
 
 .menu li {

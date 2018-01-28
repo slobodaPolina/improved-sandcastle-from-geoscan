@@ -17,7 +17,7 @@ public class SimpleController {
 	private CommonService commonService;
 
 	@RequestMapping(value = { "addmessage", "animals", "animation", "bootstrappage", "cats", "flexpage", "hello",
-			"scripts", "sandbox", "settings" }, method = { RequestMethod.GET })
+			"profile", "scripts", "sandbox", "settings" }, method = { RequestMethod.GET })
 	public String SimpleCont(HttpServletRequest request, Model model, Principal principal) {
 		try {
 			System.out.println("------ SIMPLE CONTROLLER ------");

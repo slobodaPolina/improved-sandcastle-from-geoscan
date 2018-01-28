@@ -9,23 +9,16 @@
 <script src="https://code.jquery.com/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<title>Сообщения</title>
+<title>Профиль</title>
 </head>
 <body>
-	<div id="page">
+	<div th:with="name=${session.name}" id="page">
 		<div th:replace="header :: header">INCLUDING HEADER HERE</div>
 		<div class="content-text">
-			<a href="addmessage"><button class="submit-button"
-					style="float: right">Добавить сообщение</button></a>
-			<div class="clearleft"></div>
-			<p>Ранее добавленные пользователями сообщения:</p>
-			<ul id="pages_list" th:each="i : ${list}">
-				<li>
-					<p>От пользователя [[${i.sender}]]:</p>
-					<p th:text="${i.text}"></p>
-					<p th:text="${i.time}" style="text-align: right"></p>
-				</li>
-			</ul>
+			<p style="float: left" th:text="${name}">NAME HERE</p>
+			<img th:src="@{|/uploads/${name}.jpg|}" width=500
+				style="float: right" />
+			<div class="clearright"></div>
 		</div>
 	</div>
 	<div th:replace="footer :: footer">INCLUDING FOOTER</div>

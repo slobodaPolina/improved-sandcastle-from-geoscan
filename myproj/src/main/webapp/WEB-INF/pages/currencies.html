@@ -2,14 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link th:href="@{/resources/Bootstrap.css}" rel="stylesheet" />
 <link th:href="@{/resources/styles.css}" rel="stylesheet" />
 <link th:href="@{/images/icon.gif}" rel="shortcut icon" />
+
+<link th:href="@{/resources/bootstrap.min.css}" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <title>currencies</title>
 </head>
 <body>
+	<div th:replace="header :: header">INCLUDING HEADER HERE</div>
 	<div id="page">
-		<div th:replace="header :: header">INCLUDING HEADER HERE</div>
 		<!-- stringBuilder for string changing: when u use string it creates new one for each modification,
 	 but strbuilder doesnt. StringBuffer for multithread (it is slow and safe) -->
 		<div class="content-text">

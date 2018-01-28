@@ -2,8 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
 <link th:href="@{/resources/styles.css}" rel="stylesheet" />
 <link th:href="@{/images/icon.gif}" rel="shortcut icon" />
+
+<link th:href="@{/resources/bootstrap.min.css}" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
 <title>Scripts</title>
 </head>
 <body>
@@ -25,38 +32,58 @@
 		<form>
 			<p id="0">Первое место среди причин гибели от несчастных случаев
 				в Японии в 1995 году заняли туфли на высоком каблуке.</p>
-			<input type="radio" name="0" value="yes" />Да <input type="radio"
-				name="0" value="no" />Нет
+			<p>
+				<input type="radio" name="0" value="yes" />Да <input type="radio"
+					name="0" value="no" />Нет
+			</p>
 			<p id="1">Авторучку придумали древние египтяне.</p>
-			<input type="radio" name="1" value="yes" />Да <input type="radio"
-				name="1" value="no" />Нет
+			<p>
+				<input type="radio" name="1" value="yes" />Да <input type="radio"
+					name="1" value="no" />Нет
+			</p>
 			<p id="2">Пауки питаются собственной паутиной.</p>
-			<input type="radio" name="2" value="yes" />Да <input type="radio"
-				name="2" value="no" />Нет
+			<p>
+				<input type="radio" name="2" value="yes" />Да <input type="radio"
+					name="2" value="no" />Нет
+			</p>
 			<p id="3">Летучие мыши могут принимать радиосигналы.</p>
-			<input type="radio" name="3" value="yes" />Да <input type="radio"
-				name="3" value="no" />Нет
+			<p>
+				<input type="radio" name="3" value="yes" />Да <input type="radio"
+					name="3" value="no" />Нет
+			</p>
 			<p id="4">Если положить камбалу на шахматную доску, то она станет
 				клетчатой.</p>
-			<input type="radio" name="4" value="yes" />Да <input type="radio"
-				name="4" value="no" />Нет
+			<p>
+				<input type="radio" name="4" value="yes" />Да <input type="radio"
+					name="4" value="no" />Нет
+			</p>
 			<p id="5">Радугу можно увидеть и в полночь.</p>
-			<input type="radio" name="5" value="yes" />Да <input type="radio"
-				name="5" value="no" />Нет
+			<p>
+				<input type="radio" name="5" value="yes" />Да <input type="radio"
+					name="5" value="no" />Нет
+			</p>
 			<p id="6">В Японии ученики пишут на доске кисточкой с цветными
 				чернилами.</p>
-			<input type="radio" name="6" value="yes" />Да <input type="radio"
-				name="6" value="no" />Нет
+			<p>
+				<input type="radio" name="6" value="yes" />Да <input type="radio"
+					name="6" value="no" />Нет
+			</p>
 			<p id="7">Recaptcha используется для оцифровки книг.</p>
-			<input type="radio" name="7" value="yes" />Да <input type="radio"
-				name="7" value="no" />Нет
+			<p>
+				<input type="radio" name="7" value="yes" />Да <input type="radio"
+					name="7" value="no" />Нет
+			</p>
 			<p id="8">Монетки, кидаемые туристами в фонтаны, генерируют
 				огромные деньги государству.</p>
-			<input type="radio" name="8" value="yes" />Да <input type="radio"
-				name="8" value="no" />Нет
+			<p>
+				<input type="radio" name="8" value="yes" />Да <input type="radio"
+					name="8" value="no" />Нет
+			</p>
 			<p id="9">Лайм опасен для кошек и собак.</p>
-			<input type="radio" name="9" value="yes" />Да <input type="radio"
-				name="9" value="no" />Нет
+			<p>
+				<input type="radio" name="9" value="yes" />Да <input type="radio"
+					name="9" value="no" />Нет
+			</p>
 			<p>
 				<input type="submit" value="Проверить!" class="submit-button"
 					onclick="getresult(); return false" />
