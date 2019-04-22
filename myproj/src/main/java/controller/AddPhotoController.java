@@ -28,7 +28,8 @@ public class AddPhotoController {
 		System.out.println("------ ADD PHOTO CONTROLLER ------");
 		try {
 			if ("image/jpeg".equals(photo.getContentType())) {
-				String filePath = "C:\\Users\\Полина\\git\\myproj\\src\\main\\webapp\\uploads\\";
+				String filePath = "/usr/share/tomcat8/webapps/MyProject/uploads/";
+				// it is for one session only, it will be killed after redeploy
 				File f = (new File(filePath + request.getSession().getAttribute("name") + ".jpg"));
 				photo.transferTo(f);
 				System.out.println("It is ok, the file was successfully uploaded to");

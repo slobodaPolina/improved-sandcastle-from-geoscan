@@ -71,15 +71,15 @@ public class WebConfig implements WebMvcConfigurer, ApplicationContextAware {
 	@Bean
 	public SessionFactory sessionFactory() {
 		BasicDataSource dataSource = new BasicDataSource();
-		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUsername("root");
-		dataSource.setPassword("1234");
-		dataSource.setUrl("jdbc:mysql://localhost/myprojectdb?serverTimezone=Europe/Moscow");
+		dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
+		dataSource.setUsername("dbuser");
+		dataSource.setPassword("passwd");
+		dataSource.setUrl("jdbc:mariadb://localhost:3306/myprojectdb");
 
 		LocalSessionFactoryBuilder configuration = new LocalSessionFactoryBuilder(dataSource);
 		configuration.scanPackages("entity");
-		configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
-		configuration.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
+		configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MariaDBDialect");
+		configuration.setProperty("hibernate.connection.driver_class", "org.mariadb.jdbc.Driver");
 		configuration.setProperty("hibernate.current_session_context_class",
 				"org.hibernate.context.internal.ThreadLocalSessionContext");
 		return configuration.buildSessionFactory();

@@ -34,7 +34,7 @@ public class RegisterController {
 				if (!"".equals(password)) {
 					userDao.create(name, email, PasswordHasher.hash(password, "MD5"));
 					int code = userDao.getCode(name);
-					sender.send(email, name, code);
+					//sender.send(email, name, code);
 					logger.logSuccessfulRegistration(name);
 					model.addAttribute("address", email);
 					return "registrationinfo";

@@ -28,7 +28,8 @@ public class EmailSender {
 		email.setAuthenticator(
 				new DefaultAuthenticator(props.getProperty("mail.username"), props.getProperty("mail.password")));
 		email.setStartTLSEnabled(true);
-		email.setFrom(props.getProperty("mail.username"));
+		email.setFrom("jatsko.polina@gmail.com");
+		//email.setFrom(props.getProperty("mail.username"));
 		email.setSubject(props.getProperty("mail.subject"));
 		email.setHtmlMsg("<html>" + props.getProperty("mail.text") + "<a>http://localhost:8080/MyProject/confirm?name="
 				+ name + "&code=" + code + "</a></html>");
